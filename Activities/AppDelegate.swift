@@ -11,10 +11,16 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 11, weight: .medium)]
+        appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
+        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().isTranslucent = true
+        UITabBar.appearance().tintColor = UIColor(hex: "5F33E1")
+        
         return true
     }
 

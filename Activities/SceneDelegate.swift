@@ -20,9 +20,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         self.window = window
-        let vc = MainViewController()
-        let nc = UINavigationController(rootViewController: vc)
-        self.window?.rootViewController = nc
+        
+        let tabBar = UITabBarController()
+        tabBar.tabBar.addShadow()
+        
+        let mainController = MainViewController().createNavController()
+        mainController.tabBarItem.image = UIImage(systemName: "house.fill")
+        mainController.tabBarItem.title = "Main"
+        
+        let tasksController = UIViewController().createNavController()
+        tasksController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.portrait.fill")
+        tasksController.tabBarItem.title = "Tasks"
+        
+        tabBar.viewControllers = [mainController, tasksController]
+        
+        self.window?.rootViewController = tabBar
         self.window?.makeKeyAndVisible()
     }
 
@@ -60,3 +72,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension UIViewController {
+    func createNavController() -> UINavigationController {
+        let navController = UINavigationController(rootViewController: self)
+        return navController
+    }
+}
