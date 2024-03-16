@@ -9,14 +9,53 @@
 /* Begin PBXBuildFile section */
 		E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0402BA597C900807D2A /* AppDelegate.swift */; };
 		E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0422BA597C900807D2A /* SceneDelegate.swift */; };
-		E213C0452BA597C900807D2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0442BA597C900807D2A /* ViewController.swift */; };
-		E213C0482BA597C900807D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213C0462BA597C900807D2A /* Main.storyboard */; };
+		E213C0452BA597C900807D2A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0442BA597C900807D2A /* MainViewController.swift */; };
 		E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E213C0492BA597C900807D2A /* Activities.xcdatamodeld */; };
 		E213C04D2BA597CA00807D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E213C04C2BA597CA00807D2A /* Assets.xcassets */; };
 		E213C0502BA597CA00807D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213C04E2BA597CA00807D2A /* LaunchScreen.storyboard */; };
 		E213C05B2BA597CA00807D2A /* ActivitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C05A2BA597CA00807D2A /* ActivitiesTests.swift */; };
 		E213C0652BA597CA00807D2A /* ActivitiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0642BA597CA00807D2A /* ActivitiesUITests.swift */; };
 		E213C0672BA597CA00807D2A /* ActivitiesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0662BA597CA00807D2A /* ActivitiesUITestsLaunchTests.swift */; };
+		E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0762BA59CC900807D2A /* ClosureTapGestureRecognizer.swift */; };
+		E213C0842BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0762BA59CC900807D2A /* ClosureTapGestureRecognizer.swift */; };
+		E213C0852BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0762BA59CC900807D2A /* ClosureTapGestureRecognizer.swift */; };
+		E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0772BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift */; };
+		E213C0872BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0772BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift */; };
+		E213C0882BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0772BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift */; };
+		E213C0892BA59CC900807D2A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0782BA59CC900807D2A /* UIImage+Extension.swift */; };
+		E213C08A2BA59CC900807D2A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0782BA59CC900807D2A /* UIImage+Extension.swift */; };
+		E213C08B2BA59CC900807D2A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0782BA59CC900807D2A /* UIImage+Extension.swift */; };
+		E213C08C2BA59CC900807D2A /* ProcessingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0792BA59CC900807D2A /* ProcessingButton.swift */; };
+		E213C08D2BA59CC900807D2A /* ProcessingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0792BA59CC900807D2A /* ProcessingButton.swift */; };
+		E213C08E2BA59CC900807D2A /* ProcessingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0792BA59CC900807D2A /* ProcessingButton.swift */; };
+		E213C08F2BA59CC900807D2A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07A2BA59CC900807D2A /* Double+Extension.swift */; };
+		E213C0902BA59CC900807D2A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07A2BA59CC900807D2A /* Double+Extension.swift */; };
+		E213C0912BA59CC900807D2A /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07A2BA59CC900807D2A /* Double+Extension.swift */; };
+		E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07B2BA59CC900807D2A /* UIView+Frame.swift */; };
+		E213C0932BA59CC900807D2A /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07B2BA59CC900807D2A /* UIView+Frame.swift */; };
+		E213C0942BA59CC900807D2A /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07B2BA59CC900807D2A /* UIView+Frame.swift */; };
+		E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07C2BA59CC900807D2A /* UIColor+Helper.swift */; };
+		E213C0962BA59CC900807D2A /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07C2BA59CC900807D2A /* UIColor+Helper.swift */; };
+		E213C0972BA59CC900807D2A /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07C2BA59CC900807D2A /* UIColor+Helper.swift */; };
+		E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07D2BA59CC900807D2A /* PaddingLabel.swift */; };
+		E213C0992BA59CC900807D2A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07D2BA59CC900807D2A /* PaddingLabel.swift */; };
+		E213C09A2BA59CC900807D2A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07D2BA59CC900807D2A /* PaddingLabel.swift */; };
+		E213C09B2BA59CC900807D2A /* RoundedContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07E2BA59CC900807D2A /* RoundedContainerView.swift */; };
+		E213C09C2BA59CC900807D2A /* RoundedContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07E2BA59CC900807D2A /* RoundedContainerView.swift */; };
+		E213C09D2BA59CC900807D2A /* RoundedContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07E2BA59CC900807D2A /* RoundedContainerView.swift */; };
+		E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07F2BA59CC900807D2A /* UIStackView+Extension.swift */; };
+		E213C09F2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07F2BA59CC900807D2A /* UIStackView+Extension.swift */; };
+		E213C0A02BA59CC900807D2A /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C07F2BA59CC900807D2A /* UIStackView+Extension.swift */; };
+		E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0802BA59CC900807D2A /* UIFont+names.swift */; };
+		E213C0A22BA59CC900807D2A /* UIFont+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0802BA59CC900807D2A /* UIFont+names.swift */; };
+		E213C0A32BA59CC900807D2A /* UIFont+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0802BA59CC900807D2A /* UIFont+names.swift */; };
+		E213C0A42BA59CC900807D2A /* BorderedGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0812BA59CC900807D2A /* BorderedGradientView.swift */; };
+		E213C0A52BA59CC900807D2A /* BorderedGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0812BA59CC900807D2A /* BorderedGradientView.swift */; };
+		E213C0A62BA59CC900807D2A /* BorderedGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0812BA59CC900807D2A /* BorderedGradientView.swift */; };
+		E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0822BA59CC900807D2A /* ReusableView.swift */; };
+		E213C0A82BA59CC900807D2A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0822BA59CC900807D2A /* ReusableView.swift */; };
+		E213C0A92BA59CC900807D2A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0822BA59CC900807D2A /* ReusableView.swift */; };
+		E213C0AD2BA59EB000807D2A /* EasyPeasy in Frameworks */ = {isa = PBXBuildFile; productRef = E213C0AC2BA59EB000807D2A /* EasyPeasy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +79,7 @@
 		E213C03D2BA597C900807D2A /* Activities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Activities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213C0402BA597C900807D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213C0422BA597C900807D2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E213C0442BA597C900807D2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E213C0472BA597C900807D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E213C0442BA597C900807D2A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E213C04A2BA597C900807D2A /* Activities.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Activities.xcdatamodel; sourceTree = "<group>"; };
 		E213C04C2BA597CA00807D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E213C04F2BA597CA00807D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +89,19 @@
 		E213C0602BA597CA00807D2A /* ActivitiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivitiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213C0642BA597CA00807D2A /* ActivitiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesUITests.swift; sourceTree = "<group>"; };
 		E213C0662BA597CA00807D2A /* ActivitiesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E213C0762BA59CC900807D2A /* ClosureTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		E213C0772BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewControllerRepresentable+Extension.swift"; sourceTree = "<group>"; };
+		E213C0782BA59CC900807D2A /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		E213C0792BA59CC900807D2A /* ProcessingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingButton.swift; sourceTree = "<group>"; };
+		E213C07A2BA59CC900807D2A /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		E213C07B2BA59CC900807D2A /* UIView+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		E213C07C2BA59CC900807D2A /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Helper.swift"; sourceTree = "<group>"; };
+		E213C07D2BA59CC900807D2A /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		E213C07E2BA59CC900807D2A /* RoundedContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedContainerView.swift; sourceTree = "<group>"; };
+		E213C07F2BA59CC900807D2A /* UIStackView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		E213C0802BA59CC900807D2A /* UIFont+names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+names.swift"; sourceTree = "<group>"; };
+		E213C0812BA59CC900807D2A /* BorderedGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedGradientView.swift; sourceTree = "<group>"; };
+		E213C0822BA59CC900807D2A /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E213C0AD2BA59EB000807D2A /* EasyPeasy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,12 +155,12 @@
 			children = (
 				E213C0402BA597C900807D2A /* AppDelegate.swift */,
 				E213C0422BA597C900807D2A /* SceneDelegate.swift */,
-				E213C0442BA597C900807D2A /* ViewController.swift */,
-				E213C0462BA597C900807D2A /* Main.storyboard */,
+				E213C0AA2BA59E3A00807D2A /* Main */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
 				E213C04E2BA597CA00807D2A /* LaunchScreen.storyboard */,
 				E213C0512BA597CA00807D2A /* Info.plist */,
 				E213C0492BA597C900807D2A /* Activities.xcdatamodeld */,
+				E213C0752BA59CC900807D2A /* Extensions */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -130,6 +182,34 @@
 			path = ActivitiesUITests;
 			sourceTree = "<group>";
 		};
+		E213C0752BA59CC900807D2A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E213C0762BA59CC900807D2A /* ClosureTapGestureRecognizer.swift */,
+				E213C0772BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift */,
+				E213C0782BA59CC900807D2A /* UIImage+Extension.swift */,
+				E213C0792BA59CC900807D2A /* ProcessingButton.swift */,
+				E213C07A2BA59CC900807D2A /* Double+Extension.swift */,
+				E213C07B2BA59CC900807D2A /* UIView+Frame.swift */,
+				E213C07C2BA59CC900807D2A /* UIColor+Helper.swift */,
+				E213C07D2BA59CC900807D2A /* PaddingLabel.swift */,
+				E213C07E2BA59CC900807D2A /* RoundedContainerView.swift */,
+				E213C07F2BA59CC900807D2A /* UIStackView+Extension.swift */,
+				E213C0802BA59CC900807D2A /* UIFont+names.swift */,
+				E213C0812BA59CC900807D2A /* BorderedGradientView.swift */,
+				E213C0822BA59CC900807D2A /* ReusableView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E213C0AA2BA59E3A00807D2A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E213C0442BA597C900807D2A /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +226,9 @@
 			dependencies = (
 			);
 			name = Activities;
+			packageProductDependencies = (
+				E213C0AC2BA59EB000807D2A /* EasyPeasy */,
+			);
 			productName = Activities;
 			productReference = E213C03D2BA597C900807D2A /* Activities.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +301,9 @@
 				Base,
 			);
 			mainGroup = E213C0342BA597C900807D2A;
+			packageReferences = (
+				E213C0AB2BA59EB000807D2A /* XCRemoteSwiftPackageReference "EasyPeasy" */,
+			);
 			productRefGroup = E213C03E2BA597C900807D2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,7 +322,6 @@
 			files = (
 				E213C0502BA597CA00807D2A /* LaunchScreen.storyboard in Resources */,
 				E213C04D2BA597CA00807D2A /* Assets.xcassets in Resources */,
-				E213C0482BA597C900807D2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,9 +346,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */,
+				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
+				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */,
-				E213C0452BA597C900807D2A /* ViewController.swift in Sources */,
+				E213C0892BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
+				E213C08F2BA59CC900807D2A /* Double+Extension.swift in Sources */,
+				E213C0A42BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
+				E213C08C2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
+				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E213C0452BA597C900807D2A /* MainViewController.swift in Sources */,
+				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
+				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
+				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
+				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
+				E213C09B2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
 				E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +370,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E213C09C2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
 				E213C05B2BA597CA00807D2A /* ActivitiesTests.swift in Sources */,
+				E213C0872BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E213C0902BA59CC900807D2A /* Double+Extension.swift in Sources */,
+				E213C0842BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
+				E213C0A82BA59CC900807D2A /* ReusableView.swift in Sources */,
+				E213C0932BA59CC900807D2A /* UIView+Frame.swift in Sources */,
+				E213C08D2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
+				E213C0992BA59CC900807D2A /* PaddingLabel.swift in Sources */,
+				E213C0A52BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
+				E213C08A2BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
+				E213C0A22BA59CC900807D2A /* UIFont+names.swift in Sources */,
+				E213C0962BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
+				E213C09F2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +392,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E213C0652BA597CA00807D2A /* ActivitiesUITests.swift in Sources */,
+				E213C0882BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E213C0912BA59CC900807D2A /* Double+Extension.swift in Sources */,
+				E213C08B2BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
+				E213C0942BA59CC900807D2A /* UIView+Frame.swift in Sources */,
+				E213C0A02BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
+				E213C0A92BA59CC900807D2A /* ReusableView.swift in Sources */,
+				E213C0972BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
+				E213C09A2BA59CC900807D2A /* PaddingLabel.swift in Sources */,
 				E213C0672BA597CA00807D2A /* ActivitiesUITestsLaunchTests.swift in Sources */,
+				E213C08E2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
+				E213C0A32BA59CC900807D2A /* UIFont+names.swift in Sources */,
+				E213C0852BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
+				E213C09D2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
+				E213C0A62BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +425,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E213C0462BA597C900807D2A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E213C0472BA597C900807D2A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E213C04E2BA597CA00807D2A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -451,7 +567,6 @@
 				INFOPLIST_FILE = Activities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -479,7 +594,6 @@
 				INFOPLIST_FILE = Activities/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -611,6 +725,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E213C0AB2BA59EB000807D2A /* XCRemoteSwiftPackageReference "EasyPeasy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nakiostudio/EasyPeasy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E213C0AC2BA59EB000807D2A /* EasyPeasy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E213C0AB2BA59EB000807D2A /* XCRemoteSwiftPackageReference "EasyPeasy" */;
+			productName = EasyPeasy;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E213C0492BA597C900807D2A /* Activities.xcdatamodeld */ = {
