@@ -112,3 +112,9 @@ extension UITableView {
         return id
     }
 }
+
+extension UITableViewCell {
+    static var reuseID: String {
+        String(describing: Self.self)
+    }
+}
