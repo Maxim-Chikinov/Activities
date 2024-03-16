@@ -56,6 +56,15 @@
 		E213C0A82BA59CC900807D2A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0822BA59CC900807D2A /* ReusableView.swift */; };
 		E213C0A92BA59CC900807D2A /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0822BA59CC900807D2A /* ReusableView.swift */; };
 		E213C0AD2BA59EB000807D2A /* EasyPeasy in Frameworks */ = {isa = PBXBuildFile; productRef = E213C0AC2BA59EB000807D2A /* EasyPeasy */; };
+		E213C0B02BA5A25600807D2A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0AF2BA5A25600807D2A /* Box.swift */; };
+		E213C0B12BA5A25600807D2A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0AF2BA5A25600807D2A /* Box.swift */; };
+		E213C0B22BA5A25600807D2A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0AF2BA5A25600807D2A /* Box.swift */; };
+		E213C0B42BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B32BA5A2B900807D2A /* MainViewControllerViewModel.swift */; };
+		E213C0B52BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B32BA5A2B900807D2A /* MainViewControllerViewModel.swift */; };
+		E213C0B62BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B32BA5A2B900807D2A /* MainViewControllerViewModel.swift */; };
+		E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */; };
+		E213C0B92BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */; };
+		E213C0BA2BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +111,9 @@
 		E213C0802BA59CC900807D2A /* UIFont+names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+names.swift"; sourceTree = "<group>"; };
 		E213C0812BA59CC900807D2A /* BorderedGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedGradientView.swift; sourceTree = "<group>"; };
 		E213C0822BA59CC900807D2A /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		E213C0AF2BA5A25600807D2A /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		E213C0B32BA5A2B900807D2A /* MainViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +165,7 @@
 		E213C03F2BA597C900807D2A /* Activities */ = {
 			isa = PBXGroup;
 			children = (
+				E213C0AE2BA5A24C00807D2A /* Utilities */,
 				E213C0402BA597C900807D2A /* AppDelegate.swift */,
 				E213C0422BA597C900807D2A /* SceneDelegate.swift */,
 				E213C0AA2BA59E3A00807D2A /* Main */,
@@ -198,6 +211,7 @@
 				E213C0802BA59CC900807D2A /* UIFont+names.swift */,
 				E213C0812BA59CC900807D2A /* BorderedGradientView.swift */,
 				E213C0822BA59CC900807D2A /* ReusableView.swift */,
+				E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,8 +220,17 @@
 			isa = PBXGroup;
 			children = (
 				E213C0442BA597C900807D2A /* MainViewController.swift */,
+				E213C0B32BA5A2B900807D2A /* MainViewControllerViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E213C0AE2BA5A24C00807D2A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E213C0AF2BA5A25600807D2A /* Box.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,11 +377,14 @@
 				E213C08F2BA59CC900807D2A /* Double+Extension.swift in Sources */,
 				E213C0A42BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 				E213C08C2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
+				E213C0B42BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
 				E213C0452BA597C900807D2A /* MainViewController.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
 				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
+				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
 				E213C09B2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
@@ -373,12 +399,15 @@
 				E213C09C2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
 				E213C05B2BA597CA00807D2A /* ActivitiesTests.swift in Sources */,
 				E213C0872BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E213C0B92BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0902BA59CC900807D2A /* Double+Extension.swift in Sources */,
+				E213C0B52BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */,
 				E213C0842BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E213C0A82BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E213C0932BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E213C08D2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
 				E213C0992BA59CC900807D2A /* PaddingLabel.swift in Sources */,
+				E213C0B12BA5A25600807D2A /* Box.swift in Sources */,
 				E213C0A52BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 				E213C08A2BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
 				E213C0A22BA59CC900807D2A /* UIFont+names.swift in Sources */,
@@ -398,12 +427,15 @@
 				E213C0942BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E213C0A02BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E213C0A92BA59CC900807D2A /* ReusableView.swift in Sources */,
+				E213C0BA2BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
+				E213C0B62BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */,
 				E213C0972BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
 				E213C09A2BA59CC900807D2A /* PaddingLabel.swift in Sources */,
 				E213C0672BA597CA00807D2A /* ActivitiesUITestsLaunchTests.swift in Sources */,
 				E213C08E2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
 				E213C0A32BA59CC900807D2A /* UIFont+names.swift in Sources */,
 				E213C0852BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
+				E213C0B22BA5A25600807D2A /* Box.swift in Sources */,
 				E213C09D2BA59CC900807D2A /* RoundedContainerView.swift in Sources */,
 				E213C0A62BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 			);
