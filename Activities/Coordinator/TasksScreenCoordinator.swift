@@ -22,8 +22,8 @@ class TasksScreenCoordinator: Coordinator {
         let viewModel = TasksViewControllerViewModel()
         viewModel.coordinator = self
         let mainController = TasksViewController(viewModel: viewModel)
-        mainController.tabBarItem.image = UIImage(systemName: "house.fill")
-        mainController.tabBarItem.title = "Main"
+        mainController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.fill")
+        mainController.tabBarItem.title = "Tasks"
         return (viewModel, mainController)
     }()
     
@@ -43,6 +43,12 @@ class TasksScreenCoordinator: Coordinator {
 }
 
 extension TasksScreenCoordinator: TasksScreenNavigation {
+    func addTask() {
+        let taskVC = UIViewController()
+        taskVC.view.backgroundColor = .white
+        screenNavigation.present(taskVC, animated: true)
+    }
+    
     func goToTask() {
         let taskVC = UIViewController()
         taskVC.view.backgroundColor = .white

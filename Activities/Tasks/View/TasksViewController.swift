@@ -30,6 +30,62 @@ class TasksViewController: UIViewController {
         return lbl
     }()
     
+    private lazy var addTaskButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(addTaskTap), for: .touchUpInside)
+        btn.setImage(
+            UIImage(systemName: "plus.rectangle.fill")?.withRenderingMode(.alwaysTemplate),
+            for: .normal
+        )
+        btn.tintColor = UIColor(hexString: "5F33E1")
+        btn.setTitle("Add task ", for: .normal)
+        btn.roundCorners()
+        btn.semanticContentAttribute = .forceRightToLeft
+        return btn
+    }()
+    
+    private lazy var taskTypeSegmentedControl: CustomSegmentedControl = {
+        let segmentedControl = CustomSegmentedControl(frame: .zero)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        segmentedControl.insertSegment(withTitle: "All", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "To-do", at: 1, animated: false)
+        segmentedControl.insertSegment(withTitle: "In Progress", at: 2, animated: false)
+        segmentedControl.insertSegment(withTitle: "Complete", at: 3, animated: false)
+        segmentedControl.selectedSegmentIndex = 0
+        
+        segmentedControl.selectedSegmentTintColor = UIColor(hexString: "5F33E2")
+        
+        segmentedControl.setTitleTextAttributes(
+            [
+                .foregroundColor: UIColor(hex: "5F33E2"),
+                .font: UIFont.systemFont(ofSize: 14, weight: .medium)
+            ],
+            for: .normal
+        )
+        segmentedControl.setTitleTextAttributes(
+            [
+                .foregroundColor: UIColor.white,
+                .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
+            ],
+            for: .selected
+        )
+        segmentedControl.addTarget(self, action: #selector(taskTypeSegmentedControlChanged), for: .primaryActionTriggered)
+        
+        return segmentedControl
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .default
+        searchBar.placeholder = "Search..."
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = false
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +94,7 @@ class TasksViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         tableView.separatorColor = .clear
         tableView.register(cellType: TaskTableViewCell.self)
+        tableView.tableHeaderView = searchBar
         return tableView
     }()
     
@@ -86,7 +143,8 @@ class TasksViewController: UIViewController {
     
     private func setupSubviews() {
         view.addSubviews(
-            taskGroupsLabel, taskGroupsCountLabel,
+            taskGroupsLabel, taskGroupsCountLabel, addTaskButton,
+            taskTypeSegmentedControl,
             tableView
         )
     }
@@ -105,11 +163,34 @@ class TasksViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor == taskGroupsLabel.bottomAnchor + 8,
+            addTaskButton.centerYAnchor == taskGroupsLabel.centerYAnchor,
+            addTaskButton.trailingAnchor == view.trailingAnchor - 16,
+            addTaskButton.heightAnchor == 48
+        ])
+        
+        NSLayoutConstraint.activate([
+            taskTypeSegmentedControl.topAnchor == taskGroupsCountLabel.bottomAnchor + 16,
+            taskTypeSegmentedControl.leadingAnchor == view.leadingAnchor + 16,
+            taskTypeSegmentedControl.trailingAnchor == view.trailingAnchor - 16
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor == taskTypeSegmentedControl.bottomAnchor + 8,
             tableView.leadingAnchor == view.leadingAnchor,
             tableView.trailingAnchor == view.trailingAnchor,
             tableView.bottomAnchor == view.bottomAnchor
         ])
+    }
+    
+    @objc
+    private func taskTypeSegmentedControlChanged(_ sender: UISegmentedControl) {
+        let selectedIndex = sender.selectedSegmentIndex
+        viewModel.taskTypeSegmenterAction?(selectedIndex)
+    }
+    
+    @objc
+    private func addTaskTap() {
+        viewModel.addTaskAction?()
     }
 }
 
@@ -130,6 +211,12 @@ extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.tasks[indexPath.row]
         model.selectButtonAction?()
+    }
+}
+
+extension TasksViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("\(searchBar.text ?? "")")
     }
 }
 

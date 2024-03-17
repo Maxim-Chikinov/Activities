@@ -8,6 +8,7 @@
 import UIKit
 
 protocol TasksScreenNavigation : AnyObject{
+    func addTask()
     func goToTask()
     func goToFilters()
 }
@@ -19,6 +20,19 @@ class TasksViewControllerViewModel {
     var taskTitle = Box("Tasks")
     var taskCount = Box("")
     var tasks = [TaskTableViewCellViewModel]()
+    var addTaskAction: (() -> Void)?
+    var taskTypeSegmenterAction: ((Int) -> Void)?
+    
+    init() {
+        addTaskAction = { [weak self] in
+            self?.coordinator?.addTask()
+        }
+        
+        taskTypeSegmenterAction = { [weak self] index in
+            print("\(index)")
+            self?.getData()
+        }
+    }
     
     func getData() {
         tasks.removeAll()

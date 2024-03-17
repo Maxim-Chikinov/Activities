@@ -47,6 +47,15 @@ class TaskTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private lazy var dateImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(systemName: "clock.fill")
+        view.tintColor = UIColor(hexString: "AB94FF")
+        return view
+    }()
+    
     private lazy var dateLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +133,7 @@ class TaskTableViewCell: UITableViewCell {
         containerView.addSubviews(
             subtitleLabel,
             titleLabel,
-            dateLabel,
+            dateImageView, dateLabel,
             imageContainer,
             stateLabel
         )
@@ -141,7 +150,7 @@ class TaskTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            subtitleLabel.topAnchor == containerView.topAnchor + 24,
+            subtitleLabel.topAnchor == containerView.topAnchor + 18,
             subtitleLabel.leadingAnchor == containerView.leadingAnchor + 16,
             subtitleLabel.trailingAnchor == imageContainer.leadingAnchor - 16,
         ])
@@ -153,8 +162,14 @@ class TaskTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor == titleLabel.bottomAnchor + 8,
-            dateLabel.leadingAnchor == containerView.leadingAnchor + 16,
+            dateImageView.centerYAnchor == dateLabel.centerYAnchor,
+            dateImageView.leadingAnchor == containerView.leadingAnchor + 16,
+            dateImageView.widthAnchor == 20
+        ])
+        
+        NSLayoutConstraint.activate([
+            dateLabel.topAnchor == titleLabel.bottomAnchor + 12,
+            dateLabel.leadingAnchor == dateImageView.trailingAnchor + 8,
             dateLabel.trailingAnchor == stateLabel.leadingAnchor - 16,
             dateLabel.bottomAnchor <= containerView.bottomAnchor - 16
         ])
