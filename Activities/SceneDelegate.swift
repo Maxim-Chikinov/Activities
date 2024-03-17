@@ -22,14 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         self.window = window
         
-        let tabBar = UITabBarController()
-        tabBar.tabBar.addShadow()
-        
-        let mainNavigationController = UINavigationController()
-        appCoordinator = AppCoordinator(navigationController: mainNavigationController, tabBar: tabBar)
+        appCoordinator = AppCoordinator()
         appCoordinator!.start()
         
-        self.window?.rootViewController = mainNavigationController
+        self.window?.rootViewController = appCoordinator?.navigationController
         self.window?.makeKeyAndVisible()
     }
 
