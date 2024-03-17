@@ -1,16 +1,16 @@
 //
-//  MainViewController.swift
+//  TasksViewController.swift
 //  Activities
 //
-//  Created by Chikinov Maxim on 16.03.2024.
+//  Created by Chikinov Maxim on 17.03.2024.
 //
 
 import UIKit
 import SwiftUI
 
-class MainViewController: UIViewController {
+class TasksViewController: UIViewController {
     
-    var viewModel: MainViewControllerViewModel
+    var viewModel: TasksViewControllerViewModel
     
     private lazy var taskGroupsLabel: UILabel = {
         let lbl = UILabel()
@@ -37,11 +37,11 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         tableView.separatorColor = .clear
-        tableView.register(cellType: TaskGroupTableViewCell.self)
+        tableView.register(cellType: TaskTableViewCell.self)
         return tableView
     }()
     
-    init(viewModel: MainViewControllerViewModel) {
+    init(viewModel: TasksViewControllerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        title = "Main Screen"
+        title = "Tasks Screen"
         
         setupBinding()
         setupSubviews()
@@ -75,11 +75,11 @@ class MainViewController: UIViewController {
     }
     
     private func setupBinding() {
-        viewModel.taskGroupsTitle.bind { [weak self] text in
+        viewModel.taskTitle.bind { [weak self] text in
             self?.taskGroupsLabel.text = text
         }
         
-        viewModel.taskGroupsCount.bind { [weak self] text in
+        viewModel.taskCount.bind { [weak self] text in
             self?.taskGroupsCountLabel.text = text
         }
     }
@@ -113,37 +113,37 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.taskGroups.count
+        return viewModel.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TaskGroupTableViewCell.reuseID) as! TaskGroupTableViewCell
-        let model = viewModel.taskGroups[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseID) as! TaskTableViewCell
+        let model = viewModel.tasks[indexPath.row]
         cell.configure(model: model)
         return cell
     }
 }
 
-extension MainViewController: UITableViewDelegate {
+extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.taskGroups[indexPath.row]
+        let model = viewModel.tasks[indexPath.row]
         model.selectButtonAction?()
     }
 }
 
 // MARK: - PreviewProvider
-struct MainViewControllerPreview: PreviewProvider {
+struct TasksViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        let coordinator = MainScreenCoordinator(
+        let coordinator = TasksScreenCoordinator(
             navigationController: UINavigationController(),
             tabBar: UITabBarController()
         )
         
-        let model = MainViewControllerViewModel()
+        let model = TasksViewControllerViewModel()
         model.coordinator = coordinator
-        let vc = MainViewController(viewModel: model)
+        let vc = TasksViewController(viewModel: model)
         let nc = UINavigationController(rootViewController: vc)
         
         return nc

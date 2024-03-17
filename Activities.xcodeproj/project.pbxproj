@@ -35,6 +35,9 @@
 		E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */; };
 		E2BDEF692BA73E46003AD044 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF682BA73E46003AD044 /* MainScreenCoordinator.swift */; };
 		E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */; };
+		E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF6F2BA7500F003AD044 /* TasksViewControllerViewModel.swift */; };
+		E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF712BA7501A003AD044 /* TasksViewController.swift */; };
+		E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF732BA750F3003AD044 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E2BDEF682BA73E46003AD044 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
 		E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenCoordinator.swift; sourceTree = "<group>"; };
+		E2BDEF6F2BA7500F003AD044 /* TasksViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E2BDEF712BA7501A003AD044 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		E2BDEF732BA750F3003AD044 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 				E213C0422BA597C900807D2A /* SceneDelegate.swift */,
 				E2BDEF652BA73ABE003AD044 /* Coordinator */,
 				E213C0AA2BA59E3A00807D2A /* Main */,
+				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
 				E213C04E2BA597CA00807D2A /* LaunchScreen.storyboard */,
 				E213C0512BA597CA00807D2A /* Info.plist */,
@@ -179,6 +186,32 @@
 				E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E2BDEF6C2BA74FD2003AD044 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF6D2BA74FE2003AD044 /* ViewModel */,
+				E2BDEF6E2BA74FE5003AD044 /* View */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		E2BDEF6D2BA74FE2003AD044 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF6F2BA7500F003AD044 /* TasksViewControllerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E2BDEF6E2BA74FE5003AD044 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF712BA7501A003AD044 /* TasksViewController.swift */,
+				E2BDEF732BA750F3003AD044 /* TaskTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +293,7 @@
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
 				E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */,
+				E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */,
 				E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */,
 				E213C0892BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
 				E213C08F2BA59CC900807D2A /* Double+Extension.swift in Sources */,
@@ -272,6 +306,8 @@
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
 				E213C0452BA597C900807D2A /* MainViewController.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
+				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
+				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
 				E2BDEF692BA73E46003AD044 /* MainScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,

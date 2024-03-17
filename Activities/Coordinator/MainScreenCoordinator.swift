@@ -40,7 +40,6 @@ class MainScreenCoordinator: Coordinator {
     }
     
     func start() {
-        tabBar.selectedIndex = 0
         mainScreenNavigation.popToRootViewController(animated: true)
     }
 }

@@ -14,18 +14,42 @@ class TasksScreenCoordinator: Coordinator {
     var navigationController: UINavigationController
     var tabBar: UITabBarController
     
+    // Context
+    let screenNavigation = UINavigationController()
+    
+    // Main Screen
+    private lazy var tasksModule: (viewModel: TasksViewControllerViewModel, controller: TasksViewController) = {
+        let viewModel = TasksViewControllerViewModel()
+        viewModel.coordinator = self
+        let mainController = TasksViewController(viewModel: viewModel)
+        mainController.tabBarItem.image = UIImage(systemName: "house.fill")
+        mainController.tabBarItem.title = "Main"
+        return (viewModel, mainController)
+    }()
+    
     init(navigationController: UINavigationController, tabBar: UITabBarController) {
         self.navigationController = navigationController
         self.tabBar = tabBar
+        
+        screenNavigation.pushViewController(tasksModule.controller, animated: false)
+        var controllers = tabBar.viewControllers ?? []
+        controllers.append(screenNavigation)
+        tabBar.viewControllers = controllers
     }
     
     func start() {
-        let tasksController = UIViewController().createNavController()
-        tasksController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.portrait.fill")
-        tasksController.tabBarItem.title = "Tasks"
+        screenNavigation.popToRootViewController(animated: true)
+    }
+}
+
+extension TasksScreenCoordinator: TasksScreenNavigation {
+    func goToTask() {
+        let taskVC = UIViewController()
+        taskVC.view.backgroundColor = .white
+        screenNavigation.present(taskVC, animated: true)
+    }
+    
+    func goToFilters() {
         
-        var controllers = tabBar.viewControllers ?? []
-        controllers.append(tasksController)
-        tabBar.viewControllers = controllers
     }
 }
