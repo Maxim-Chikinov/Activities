@@ -54,7 +54,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        title = "Main Screen"
         
         setupBinding()
         setupSubviews()

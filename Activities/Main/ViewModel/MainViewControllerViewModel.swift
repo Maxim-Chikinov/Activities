@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol MainScreenNavigation : AnyObject{
+    func goToTasks()
+    func goToChangeTask()
+}
+
 class MainViewControllerViewModel {
+    
+    weak var coordinator: MainScreenNavigation?
+    
     var taskGroupsTitle = Box("Tasks Groups")
     var taskGroupsCount = Box("")
     var taskGroups = [TaskGroupTableViewCellViewModel]()
-    
-    weak var coordinator: MainScreenCoordinator?
     
     func getData() {
         taskGroups.removeAll()

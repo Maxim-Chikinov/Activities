@@ -23,11 +23,9 @@ class MainScreenCoordinator: Coordinator {
     private lazy var mainModule: (viewModel: MainViewControllerViewModel, controller: MainViewController) = {
         let viewModel = MainViewControllerViewModel()
         viewModel.coordinator = self
-        
         let mainController = MainViewController(viewModel: viewModel)
         mainController.tabBarItem.image = UIImage(systemName: "house.fill")
         mainController.tabBarItem.title = "Main"
-        
         return (viewModel, mainController)
     }()
     
@@ -45,7 +43,9 @@ class MainScreenCoordinator: Coordinator {
         tabBar.selectedIndex = 0
         mainScreenNavigation.popToRootViewController(animated: true)
     }
-    
+}
+
+extension MainScreenCoordinator: MainScreenNavigation {
     func goToTasks() {
         let tasksVC = UIViewController()
         tasksVC.view.backgroundColor = .white
