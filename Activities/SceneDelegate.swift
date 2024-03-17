@@ -10,7 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    var appCoordinator : AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,17 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         tabBar.tabBar.addShadow()
         
-        let mainController = MainViewController().createNavController()
-        mainController.tabBarItem.image = UIImage(systemName: "house.fill")
-        mainController.tabBarItem.title = "Main"
+        let mainNavigationController = UINavigationController()
+        appCoordinator = AppCoordinator(navigationController: mainNavigationController, tabBar: tabBar)
+        appCoordinator!.start()
         
-        let tasksController = UIViewController().createNavController()
-        tasksController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.portrait.fill")
-        tasksController.tabBarItem.title = "Tasks"
-        
-        tabBar.viewControllers = [mainController, tasksController]
-        
-        self.window?.rootViewController = tabBar
+        self.window?.rootViewController = mainNavigationController
         self.window?.makeKeyAndVisible()
     }
 

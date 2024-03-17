@@ -31,6 +31,10 @@
 		E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */; };
 		E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */; };
 		E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */; };
+		E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF632BA73AB7003AD044 /* Coordinator.swift */; };
+		E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */; };
+		E2BDEF692BA73E46003AD044 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF682BA73E46003AD044 /* MainScreenCoordinator.swift */; };
+		E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		E2BDEF632BA73AB7003AD044 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E2BDEF682BA73E46003AD044 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
+		E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 			children = (
 				E213C0402BA597C900807D2A /* AppDelegate.swift */,
 				E213C0422BA597C900807D2A /* SceneDelegate.swift */,
+				E2BDEF652BA73ABE003AD044 /* Coordinator */,
 				E213C0AA2BA59E3A00807D2A /* Main */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
 				E213C04E2BA597CA00807D2A /* LaunchScreen.storyboard */,
@@ -130,7 +139,6 @@
 		E213C0AA2BA59E3A00807D2A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E213C0BD2BA5A9BC00807D2A /* Model */,
 				E213C0BC2BA5A99600807D2A /* ViewModel */,
 				E213C0BB2BA5A98000807D2A /* View */,
 			);
@@ -162,11 +170,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		E213C0BD2BA5A9BC00807D2A /* Model */ = {
+		E2BDEF652BA73ABE003AD044 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				E2BDEF632BA73AB7003AD044 /* Coordinator.swift */,
+				E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */,
+				E2BDEF682BA73E46003AD044 /* MainScreenCoordinator.swift */,
+				E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */,
 			);
-			path = Model;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,11 +267,15 @@
 				E213C08C2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
 				E213C0B42BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
+				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
 				E213C0452BA597C900807D2A /* MainViewController.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
+				E2BDEF692BA73E46003AD044 /* MainScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
+				E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */,
 				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
 				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,

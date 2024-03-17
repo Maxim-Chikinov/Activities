@@ -10,7 +10,7 @@ import SwiftUI
 
 class MainViewController: UIViewController {
     
-    private lazy var viewModel = MainViewControllerViewModel(context: self)
+    var viewModel: MainViewControllerViewModel
     
     private lazy var taskGroupsLabel: UILabel = {
         let lbl = UILabel()
@@ -40,6 +40,15 @@ class MainViewController: UIViewController {
         tableView.register(cellType: TaskGroupTableViewCell.self)
         return tableView
     }()
+    
+    init(viewModel: MainViewControllerViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,7 +136,7 @@ extension MainViewController: UITableViewDelegate {
 // MARK: - PreviewProvider
 struct MainViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        let vc = MainViewController()
+        let vc = MainViewController(viewModel: MainViewControllerViewModel())
         let nc = UINavigationController(rootViewController: vc)
         return nc
             .toPreview()
