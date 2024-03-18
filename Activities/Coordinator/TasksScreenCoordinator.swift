@@ -44,18 +44,25 @@ class TasksScreenCoordinator: Coordinator {
 
 extension TasksScreenCoordinator: TasksScreenNavigation {
     func addTask() {
-        let taskVC = UIViewController()
-        taskVC.view.backgroundColor = .white
-        screenNavigation.present(taskVC, animated: true)
+        let vm = TaskViewControllerViewModel(state: .add)
+        vm.coordinator = self
+        let taskVC = TaskViewController(viewModel: vm)
+        let nc = UINavigationController(rootViewController: taskVC)
+        screenNavigation.present(nc, animated: true)
     }
     
     func goToTask() {
-        let taskVC = UIViewController()
-        taskVC.view.backgroundColor = .white
-        screenNavigation.present(taskVC, animated: true)
+        let vm = TaskViewControllerViewModel(state: .update(taskId: ""))
+        vm.coordinator = self
+        let taskVC = TaskViewController(viewModel: vm)
+        screenNavigation.pushViewController(taskVC, animated: true)
     }
     
     func goToFilters() {
         
     }
+}
+
+extension TasksScreenCoordinator: TaskScreenNavigation {
+
 }

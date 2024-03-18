@@ -39,6 +39,12 @@
 		E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF712BA7501A003AD044 /* TasksViewController.swift */; };
 		E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF732BA750F3003AD044 /* TaskTableViewCell.swift */; };
 		E2BDEF772BA77B0A003AD044 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF762BA77B0A003AD044 /* CustomSegmentedControl.swift */; };
+		E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF7B2BA845A8003AD044 /* TaskViewController.swift */; };
+		E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF7D2BA845BC003AD044 /* TaskViewControllerViewModel.swift */; };
+		E2BDEF802BA857BC003AD044 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF7F2BA857BC003AD044 /* CustomViewController.swift */; };
+		E2BDEF822BA8BD47003AD044 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF812BA8BD47003AD044 /* Stack.swift */; };
+		E2BDEF842BA8C922003AD044 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF832BA8C922003AD044 /* InsetTextField.swift */; };
+		E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF862BA8CE46003AD044 /* TaskState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +82,12 @@
 		E2BDEF712BA7501A003AD044 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		E2BDEF732BA750F3003AD044 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		E2BDEF762BA77B0A003AD044 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		E2BDEF7B2BA845A8003AD044 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		E2BDEF7D2BA845BC003AD044 /* TaskViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E2BDEF7F2BA857BC003AD044 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		E2BDEF812BA8BD47003AD044 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		E2BDEF832BA8C922003AD044 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		E2BDEF862BA8CE46003AD044 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +122,12 @@
 			children = (
 				E213C0402BA597C900807D2A /* AppDelegate.swift */,
 				E213C0422BA597C900807D2A /* SceneDelegate.swift */,
+				E2BDEF852BA8CE26003AD044 /* Models */,
 				E2BDEF652BA73ABE003AD044 /* Coordinator */,
 				E2BDEF752BA77B01003AD044 /* Views */,
 				E213C0AA2BA59E3A00807D2A /* Main */,
 				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
+				E2BDEF782BA84533003AD044 /* Task */,
 				E213C0AE2BA5A24C00807D2A /* Utilities */,
 				E213C0752BA59CC900807D2A /* Extensions */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
@@ -221,8 +235,44 @@
 			isa = PBXGroup;
 			children = (
 				E2BDEF762BA77B0A003AD044 /* CustomSegmentedControl.swift */,
+				E2BDEF7F2BA857BC003AD044 /* CustomViewController.swift */,
+				E2BDEF812BA8BD47003AD044 /* Stack.swift */,
+				E2BDEF832BA8C922003AD044 /* InsetTextField.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E2BDEF782BA84533003AD044 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF792BA84594003AD044 /* ViewModel */,
+				E2BDEF7A2BA8459A003AD044 /* View */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		E2BDEF792BA84594003AD044 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF7D2BA845BC003AD044 /* TaskViewControllerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E2BDEF7A2BA8459A003AD044 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF7B2BA845A8003AD044 /* TaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2BDEF852BA8CE26003AD044 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E2BDEF862BA8CE46003AD044 /* TaskState.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +351,7 @@
 			files = (
 				E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */,
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
+				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
 				E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */,
@@ -312,15 +363,19 @@
 				E213C08C2BA59CC900807D2A /* ProcessingButton.swift in Sources */,
 				E213C0B42BA5A2B900807D2A /* MainViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */,
 				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
 				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
+				E2BDEF802BA857BC003AD044 /* CustomViewController.swift in Sources */,
 				E213C0452BA597C900807D2A /* MainViewController.swift in Sources */,
+				E2BDEF822BA8BD47003AD044 /* Stack.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
 				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
 				E2BDEF692BA73E46003AD044 /* MainScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
+				E2BDEF842BA8C922003AD044 /* InsetTextField.swift in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
 				E2BDEF772BA77B0A003AD044 /* CustomSegmentedControl.swift in Sources */,
 				E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */,
@@ -328,6 +383,7 @@
 				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
+				E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */,
 				E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

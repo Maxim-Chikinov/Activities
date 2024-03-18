@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class TasksViewController: UIViewController {
+class TasksViewController: CustomViewController {
     
     var viewModel: TasksViewControllerViewModel
     
@@ -48,15 +48,16 @@ class TasksViewController: UIViewController {
     private lazy var taskTypeSegmentedControl: CustomSegmentedControl = {
         let segmentedControl = CustomSegmentedControl(frame: .zero)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.addTarget(self, action: #selector(taskTypeSegmentedControlChanged), for: .primaryActionTriggered)
         
-        segmentedControl.insertSegment(withTitle: "All", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "To-do", at: 1, animated: false)
-        segmentedControl.insertSegment(withTitle: "In Progress", at: 2, animated: false)
-        segmentedControl.insertSegment(withTitle: "Complete", at: 3, animated: false)
+        var types = TaskState.allCases
+        types = types.reversed()
+        types.forEach { task in
+            segmentedControl.insertSegment(withTitle: task.title, at: 0, animated: false)
+        }
         segmentedControl.selectedSegmentIndex = 0
         
         segmentedControl.selectedSegmentTintColor = UIColor(hexString: "5F33E2")
-        
         segmentedControl.setTitleTextAttributes(
             [
                 .foregroundColor: UIColor(hex: "5F33E2"),
@@ -71,7 +72,6 @@ class TasksViewController: UIViewController {
             ],
             for: .selected
         )
-        segmentedControl.addTarget(self, action: #selector(taskTypeSegmentedControlChanged), for: .primaryActionTriggered)
         
         return segmentedControl
     }()
@@ -116,13 +116,17 @@ class TasksViewController: UIViewController {
         setupBinding()
         setupSubviews()
         setupConstraints()
+        
+        view.addTapGesture { [weak self] _ in
+            self?.view.endEditing(true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.getData()
-        tableView.reloadData()
+        let type = TaskState(rawValue: taskTypeSegmentedControl.selectedSegmentIndex) ?? .all
+        viewModel.getData(taskType: type)
     }
     
     override func viewDidLayoutSubviews() {
@@ -138,6 +142,10 @@ class TasksViewController: UIViewController {
         
         viewModel.taskCount.bind { [weak self] text in
             self?.taskGroupsCountLabel.text = text
+        }
+        
+        viewModel.tasks.bind { [weak self] _ in
+            self?.tableView.reloadData()
         }
     }
     
@@ -196,20 +204,24 @@ class TasksViewController: UIViewController {
 
 extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tasks.count
+        return viewModel.tasks.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseID) as! TaskTableViewCell
-        let model = viewModel.tasks[indexPath.row]
+        let model = viewModel.tasks.value[indexPath.row]
         cell.configure(model: model)
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
 
 extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.tasks[indexPath.row]
+        let model = viewModel.tasks.value[indexPath.row]
         model.selectButtonAction?()
     }
 }

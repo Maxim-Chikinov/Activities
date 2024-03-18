@@ -19,7 +19,7 @@ class TasksViewControllerViewModel {
     
     var taskTitle = Box("Tasks")
     var taskCount = Box("")
-    var tasks = [TaskTableViewCellViewModel]()
+    var tasks = Box([TaskTableViewCellViewModel]())
     var addTaskAction: (() -> Void)?
     var taskTypeSegmenterAction: ((Int) -> Void)?
     
@@ -29,20 +29,22 @@ class TasksViewControllerViewModel {
         }
         
         taskTypeSegmenterAction = { [weak self] index in
-            print("\(index)")
-            self?.getData()
+            let type = TaskState(rawValue: index) ?? .all
+            self?.getData(taskType: type)
         }
     }
     
-    func getData() {
-        tasks.removeAll()
-        for _ in 0...10 {
+    func getData(taskType: TaskState) {
+        var tasks = [TaskTableViewCellViewModel]()
+        for _ in 0...10 / (taskType.rawValue + 1) {
             let task = TaskTableViewCellViewModel()
             task.selectButtonAction = { [weak self] in
                 self?.coordinator?.goToTask()
             }
             tasks.append(task)
         }
+        
+        self.tasks.value = tasks
         
         taskCount.value = "\(tasks.count)"
     }
