@@ -1,5 +1,5 @@
 //
-//  MainViewControllerViewModel.swift
+//  GroupsViewControllerViewModel.swift
 //  Activities
 //
 //  Created by Chikinov Maxim on 16.03.2024.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol MainScreenNavigation : AnyObject{
+protocol GroupsScreenNavigation : AnyObject{
     func goToTasks()
     func goToChangeTask()
 }
 
-class MainViewControllerViewModel {
+class GroupsViewControllerViewModel {
     
-    weak var coordinator: MainScreenNavigation?
+    weak var coordinator: GroupsScreenNavigation?
     
     var taskGroupsTitle = Box("Tasks Groups")
     var taskGroupsCount = Box("")

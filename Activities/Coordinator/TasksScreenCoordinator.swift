@@ -17,14 +17,14 @@ class TasksScreenCoordinator: Coordinator {
     // Context
     let screenNavigation = UINavigationController()
     
-    // Main Screen
+    // Tasks Screen
     private lazy var tasksModule: (viewModel: TasksViewControllerViewModel, controller: TasksViewController) = {
         let viewModel = TasksViewControllerViewModel()
         viewModel.coordinator = self
-        let mainController = TasksViewController(viewModel: viewModel)
-        mainController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.fill")
-        mainController.tabBarItem.title = "Tasks"
-        return (viewModel, mainController)
+        let viewController = TasksViewController(viewModel: viewModel)
+        viewController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.fill")
+        viewController.tabBarItem.title = "Tasks"
+        return (viewModel, viewController)
     }()
     
     init(navigationController: UINavigationController, tabBar: UITabBarController) {

@@ -1,9 +1,8 @@
 //
 //  ReusableView.swift
-//  Winline
+//  QuickLayouts
 //
-//  Created by Алексей Гущин on 30.11.2020.
-//  Copyright © 2020 Grow App. All rights reserved.
+//  Created by Chikinov Maxim on 18.09.2023.
 //
 
 import UIKit

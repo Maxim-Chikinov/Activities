@@ -111,7 +111,7 @@ class TasksViewController: CustomViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        title = "Tasks Screen"
+        title = "Tasks"
         
         setupBinding()
         setupSubviews()

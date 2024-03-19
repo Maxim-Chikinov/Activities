@@ -31,15 +31,15 @@ class AppCoordinator: Coordinator {
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(tabBar, animated: false)
         
-        // Add Main Screen
-        let mainCoordinator = MainScreenCoordinator(navigationController: navigationController, tabBar: tabBar)
-        children.append(mainCoordinator)
-        mainCoordinator.start()
-        
         // Add Tasks Screen
         let tasksCoordinator = TasksScreenCoordinator(navigationController: navigationController, tabBar: tabBar)
         children.append(tasksCoordinator)
         tasksCoordinator.start()
+        
+        // Add Groups Screen
+        let groupsCoordinator = GroupsScreenCoordinator(navigationController: navigationController, tabBar: tabBar)
+        children.append(groupsCoordinator)
+        groupsCoordinator.start()
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  GroupsViewController.swift
 //  Activities
 //
 //  Created by Chikinov Maxim on 16.03.2024.
@@ -8,9 +8,9 @@
 import UIKit
 import SwiftUI
 
-class MainViewController: UIViewController {
+class GroupsViewController: UIViewController {
     
-    var viewModel: MainViewControllerViewModel
+    var viewModel: GroupsViewControllerViewModel
     
     private lazy var taskGroupsLabel: UILabel = {
         let lbl = UILabel()
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
-    init(viewModel: MainViewControllerViewModel) {
+    init(viewModel: GroupsViewControllerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        title = "Main Screen"
+        title = "Groups"
         
         setupBinding()
         setupSubviews()
@@ -113,7 +113,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.taskGroups.count
     }
@@ -126,7 +126,7 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
-extension MainViewController: UITableViewDelegate {
+extension GroupsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.taskGroups[indexPath.row]
         model.selectButtonAction?()
@@ -134,16 +134,16 @@ extension MainViewController: UITableViewDelegate {
 }
 
 // MARK: - PreviewProvider
-struct MainViewControllerPreview: PreviewProvider {
+struct GroupsViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        let coordinator = MainScreenCoordinator(
+        let coordinator = GroupsScreenCoordinator(
             navigationController: UINavigationController(),
             tabBar: UITabBarController()
         )
         
-        let model = MainViewControllerViewModel()
+        let model = GroupsViewControllerViewModel()
         model.coordinator = coordinator
-        let vc = MainViewController(viewModel: model)
+        let vc = GroupsViewController(viewModel: model)
         let nc = UINavigationController(rootViewController: vc)
         
         return nc

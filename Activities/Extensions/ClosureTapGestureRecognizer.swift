@@ -1,8 +1,8 @@
 //
 //  ClosureGestureRecognizer.swift
-//  WinlineBy
+//  Activities
 //
-//  Created by dmitriy korolchenko on 04.10.2021.
+//  Created by Chikinov Maxim on 16.03.2024.
 //
 
 import UIKit
