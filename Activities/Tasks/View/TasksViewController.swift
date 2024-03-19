@@ -214,19 +214,16 @@ extension TasksViewController: UITableViewDataSource {
         return true
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "", handler: { [weak self] _,_,_ in
+            guard let self else { return }
+            let task = self.viewModel.tasks.value[indexPath.row].task
+            self.viewModel.delete(task: task)
+        })
         
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        guard editingStyle == .delete else {
-            return
-        }
-        
-        let task = viewModel.tasks.value[indexPath.row].task
-        viewModel.delete(task: task)
+        deleteAction.image = UIImage(systemName: "trash.fill")?.withTintColor(UIColor(hexString: "9260F4"), renderingMode: .alwaysOriginal)
+        deleteAction.backgroundColor = .white
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
