@@ -40,7 +40,7 @@ class TaskViewControllerViewModel {
         }
         
         saveAction = { [weak self] title, description, state, date in
-            guard let self else { return }
+            guard let _ = self else { return }
             print(title)
             print(description)
             print(state)

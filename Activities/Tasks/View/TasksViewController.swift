@@ -116,10 +116,6 @@ class TasksViewController: CustomViewController {
         setupBinding()
         setupSubviews()
         setupConstraints()
-        
-        view.addTapGesture { [weak self] _ in
-            self?.view.endEditing(true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -223,6 +219,7 @@ extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.tasks.value[indexPath.row]
         model.selectButtonAction?()
+        view.endEditing(true)
     }
 }
 
