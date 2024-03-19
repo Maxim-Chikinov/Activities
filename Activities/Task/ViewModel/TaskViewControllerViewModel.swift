@@ -22,7 +22,7 @@ class TaskViewControllerViewModel {
     
     var title = Box("Tasks")
     var buttonTitle = Box("Save")
-    var saveAction: (() -> Void)?
+    var saveAction: ((_ title: String, _ description: String, _ state: TaskState, _ date: Date) -> Void)?
     var taskTitle = Box("")
     var taskDescription = Box("")
     var taskState = Box(TaskState.all)
@@ -39,8 +39,12 @@ class TaskViewControllerViewModel {
             buttonTitle.value = "UPDATE"
         }
         
-        saveAction = { [weak self] in
-            _ = self
+        saveAction = { [weak self] title, description, state, date in
+            guard let self else { return }
+            print(title)
+            print(description)
+            print(state)
+            print(state)
         }
     }
     

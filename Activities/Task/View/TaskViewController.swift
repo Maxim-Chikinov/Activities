@@ -237,7 +237,12 @@ class TaskViewController: UIViewController {
     
     @objc
     private func addTaskTap() {
-        viewModel.saveAction?()
+        viewModel.saveAction?(
+            titleTextField.text ?? "",
+            descriptionTextView.text,
+            TaskState(rawValue: stateSegmentedControl.selectedSegmentIndex) ?? .all,
+            datePicker.date
+        )
     }
 }
 
