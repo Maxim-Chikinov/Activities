@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 protocol TasksScreenNavigation : AnyObject{
-    func addTask()
-    func goToTask()
+    func addTask(completion: (() -> ())?)
+    func goToTask(task: Task, completion: (() -> ())?)
     func goToFilters()
 }
 
@@ -21,31 +22,62 @@ class TasksViewControllerViewModel {
     var taskCount = Box("")
     var tasks = Box([TaskTableViewCellViewModel]())
     var addTaskAction: (() -> Void)?
+    var taskSelectionAction: ((Task) -> Void)?
     var taskTypeSegmenterAction: ((Int) -> Void)?
+    
+    let managedObjectContext = CoreDataStack.shared.managedObjectContext
     
     init() {
         addTaskAction = { [weak self] in
-            self?.coordinator?.addTask()
+            self?.coordinator?.addTask { [weak self] in
+                self?.getData(taskType: .all)
+            }
         }
         
         taskTypeSegmenterAction = { [weak self] index in
             let type = TaskState(rawValue: index) ?? .all
             self?.getData(taskType: type)
         }
+        
+        taskSelectionAction = { [weak self] task in
+            self?.coordinator?.goToTask(task: task, completion: { [weak self] in
+                self?.getData(taskType: .all)
+            })
+        }
     }
     
     func getData(taskType: TaskState) {
-        var tasks = [TaskTableViewCellViewModel]()
-        for _ in 0...10 / (taskType.rawValue + 1) {
-            let task = TaskTableViewCellViewModel()
-            task.selectButtonAction = { [weak self] in
-                self?.coordinator?.goToTask()
-            }
-            tasks.append(task)
+        let fetchRequest = Task.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Task.date), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            let tasks = try managedObjectContext.fetch(fetchRequest)
+            self.tasks.value = tasks.map({ t in
+                let task = TaskTableViewCellViewModel()
+                task.task = t
+                task.title.value = t.title
+                task.subtitle.value = t.descripton
+                task.date.value = t.date?.formatted()
+                return task
+            })
+            taskCount.value = "\(self.tasks.value.count)"
+        } catch {
+            print(error.localizedDescription)
         }
-        
-        self.tasks.value = tasks
-        
-        taskCount.value = "\(tasks.count)"
+    }
+    
+    func delete(task: Task, completion: (() -> ())? = nil) {
+        do {
+            managedObjectContext.delete(task)
+            try managedObjectContext.save()
+            
+            tasks.value.removeAll(where: { $0.task.taskId == task.taskId })
+            taskCount.value = "\(self.tasks.value.count)"
+            
+            completion?()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

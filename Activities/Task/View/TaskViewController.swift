@@ -15,7 +15,7 @@ class TaskViewController: UIViewController {
     private lazy var saveButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(addTaskTap), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(saveTaskTap), for: .touchUpInside)
         btn.setImage(
             UIImage(systemName: "checkmark.rectangle.fill")?.withRenderingMode(.alwaysTemplate),
             for: .normal
@@ -236,20 +236,25 @@ class TaskViewController: UIViewController {
     private func taskTypeSegmentedControlChanged(_ sender: UISegmentedControl) {}
     
     @objc
-    private func addTaskTap() {
+    private func saveTaskTap() {
         viewModel.saveAction?(
             titleTextField.text ?? "",
             descriptionTextView.text,
             TaskState(rawValue: stateSegmentedControl.selectedSegmentIndex) ?? .all,
             datePicker.date
         )
+        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - PreviewProvider
 struct TaskViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        let model = TaskViewControllerViewModel(state: .update(taskId: ""))
+        let model = TaskViewControllerViewModel(
+            state: .update(task: Task()),
+            completion: nil
+        )
         let vc = TaskViewController(viewModel: model)
         let nc = UINavigationController(rootViewController: vc)
         

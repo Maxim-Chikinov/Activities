@@ -43,16 +43,16 @@ class TasksScreenCoordinator: Coordinator {
 }
 
 extension TasksScreenCoordinator: TasksScreenNavigation {
-    func addTask() {
-        let vm = TaskViewControllerViewModel(state: .add)
+    func addTask(completion: (() -> ())?) {
+        let vm = TaskViewControllerViewModel(state: .add, completion: completion)
         vm.coordinator = self
         let taskVC = TaskViewController(viewModel: vm)
         let nc = UINavigationController(rootViewController: taskVC)
         screenNavigation.present(nc, animated: true)
     }
     
-    func goToTask() {
-        let vm = TaskViewControllerViewModel(state: .update(taskId: ""))
+    func goToTask(task: Task, completion: (() -> ())?) {
+        let vm = TaskViewControllerViewModel(state: .update(task: task), completion: completion)
         vm.coordinator = self
         let taskVC = TaskViewController(viewModel: vm)
         screenNavigation.pushViewController(taskVC, animated: true)

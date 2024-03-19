@@ -10,12 +10,13 @@ import UIKit
 import SwiftUI
 
 class TaskTableViewCellViewModel {
+    var task = Task()
+    
     var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
-    var subtitle = Box("Subtitle")
-    var title = Box("Title")
-    var date = Box("12:00")
-    var state = Box("To-do")
-    var selectButtonAction: (() -> ())? = nil
+    var title = Box(String?(""))
+    var subtitle = Box(String?(""))
+    var date = Box(String?(""))
+    var state = Box(String?(""))
 }
 
 class TaskTableViewCell: UITableViewCell {

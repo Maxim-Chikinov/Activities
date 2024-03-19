@@ -15,36 +15,57 @@ class TaskViewControllerViewModel {
     
     enum State {
         case add
-        case update(taskId: String)
+        case update(task: Task)
     }
     
     weak var coordinator: TaskScreenNavigation?
     
-    var title = Box("Tasks")
-    var buttonTitle = Box("Save")
+    var title = Box(String?(""))
+    var buttonTitle = Box("")
     var saveAction: ((_ title: String, _ description: String, _ state: TaskState, _ date: Date) -> Void)?
-    var taskTitle = Box("")
-    var taskDescription = Box("")
+    var taskTitle = Box(String?(""))
+    var taskDescription = Box(String?(""))
     var taskState = Box(TaskState.all)
-    var taskDate = Box(Date())
+    var taskDate = Box(Date?(Date()))
     
-    init(state: State) {
+    let managedObjectContext = CoreDataStack.shared.managedObjectContext
+    
+    init(state: State, completion: (() -> ())?) {
         switch state {
         case .add:
             title.value = "Add new task"
             buttonTitle.value = "SAVE"
-        case .update(taskId: let taskId):
-            _ = taskId
+        case .update(let task):
             title.value = "Update task"
             buttonTitle.value = "UPDATE"
+            taskTitle.value = task.title
+            taskDescription.value = task.descripton
+            taskDate.value = task.date
         }
         
-        saveAction = { [weak self] title, description, state, date in
-            guard let _ = self else { return }
-            print(title)
-            print(description)
-            print(state)
-            print(state)
+        saveAction = { [weak self] title, description, taskState, date in
+            guard let self else { return }
+            
+            let taskEntity: Task
+            
+            switch state {
+            case .add:
+                taskEntity = Task(context: self.managedObjectContext)
+            case .update(let task):
+                taskEntity = task
+            }
+            
+            taskEntity.setValue(UUID(), forKey: #keyPath(Task.taskId))
+            taskEntity.setValue(title, forKey: #keyPath(Task.title))
+            taskEntity.setValue(description, forKey: #keyPath(Task.descripton))
+            taskEntity.setValue(date, forKey: #keyPath(Task.date))
+            
+            do {
+                try self.managedObjectContext.save()
+                completion?()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
