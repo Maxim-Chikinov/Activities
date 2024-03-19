@@ -23,6 +23,10 @@ class TaskViewControllerViewModel {
     var title = Box("Tasks")
     var buttonTitle = Box("Save")
     var saveAction: (() -> Void)?
+    var taskTitle = Box("")
+    var taskDescription = Box("")
+    var taskState = Box(TaskState.all)
+    var taskDate = Box(Date())
     
     init(state: State) {
         switch state {

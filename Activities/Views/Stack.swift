@@ -15,6 +15,7 @@ final class Stack: UIView {
     var views: [UIView] = []
     var isScrollabel = false
     var indicatorStyle: UIScrollView.IndicatorStyle = .black
+    var onScroll: (() -> ())?
     
     private lazy var mainStackView: UIStackView = {
         let stack = UIStackView()
@@ -37,6 +38,7 @@ final class Stack: UIView {
             break
         }
         scroll.indicatorStyle = indicatorStyle
+        scroll.delegate = self
         return scroll
     }()
     
@@ -117,5 +119,11 @@ final class Stack: UIView {
                 mainStackView.bottomAnchor == bottomAnchor - margins.bottom
             ])
         }
+    }
+}
+
+extension Stack: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        onScroll?()
     }
 }

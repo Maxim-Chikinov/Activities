@@ -35,17 +35,23 @@ class TaskViewController: UIViewController {
             views: [
                 titleLabel,
                 titleTextField,
-                subtitleLabel,
-                subtitleTextView,
+                descriptionLabel,
+                descriptionTextView,
                 stateLabel,
-                taskTypeSegmentedControl,
+                stateSegmentedControl,
+                dateLabel,
+                datePickerContainer
             ],
             isScrollabel: true,
             indicatorStyle: .black
         )
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.addPadding(32, after: titleTextField)
-        stack.addPadding(32, after: subtitleTextView)
+        stack.addPadding(32, after: descriptionTextView)
+        stack.addPadding(32, after: stateSegmentedControl)
+        stack.onScroll = { [weak self] in
+            self?.view?.endEditing(true)
+        }
         return stack
     }()
     
@@ -54,7 +60,7 @@ class TaskViewController: UIViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
         lbl.textColor = .black
-        lbl.text = "Task Title"
+        lbl.text = "Title"
         return lbl
     }()
     
@@ -68,16 +74,16 @@ class TaskViewController: UIViewController {
         return tf
     }()
     
-    private lazy var subtitleLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
         lbl.textColor = .black
-        lbl.text = "Subtitle Title"
+        lbl.text = "Description"
         return lbl
     }()
     
-    private lazy var subtitleTextView: UITextView = {
+    private lazy var descriptionTextView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
@@ -91,11 +97,11 @@ class TaskViewController: UIViewController {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
         lbl.textColor = .black
-        lbl.text = "Tast State"
+        lbl.text = "State"
         return lbl
     }()
     
-    private lazy var taskTypeSegmentedControl: CustomSegmentedControl = {
+    private lazy var stateSegmentedControl: CustomSegmentedControl = {
         let segmentedControl = CustomSegmentedControl(frame: .zero)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(taskTypeSegmentedControlChanged), for: .primaryActionTriggered)
@@ -123,8 +129,34 @@ class TaskViewController: UIViewController {
             for: .selected
         )
        
-        
         return segmentedControl
+    }()
+    
+    private lazy var dateLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 18, weight: .bold)
+        lbl.textColor = .black
+        lbl.text = "Date"
+        return lbl
+    }()
+    
+    private lazy var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+    
+    private lazy var datePickerContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(datePicker)
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor == view.topAnchor,
+            datePicker.leadingAnchor == view.leadingAnchor,
+            datePicker.bottomAnchor == view.bottomAnchor,
+        ])
+        return view
     }()
     
     init(viewModel: TaskViewControllerViewModel) {
@@ -164,6 +196,18 @@ class TaskViewController: UIViewController {
         viewModel.buttonTitle.bind { [weak self] text in
             self?.saveButton.setTitle(text, for: .normal)
         }
+        
+        viewModel.taskTitle.bind { [weak self] text in
+            self?.titleTextField.text = text
+        }
+        
+        viewModel.taskDescription.bind { [weak self] text in
+            self?.descriptionTextView.text = text
+        }
+        
+        viewModel.taskState.bind { [weak self] state in
+            self?.stateSegmentedControl.selectedSegmentIndex = state.rawValue
+        }
     }
     
     private func setupSubviews() {
@@ -184,7 +228,7 @@ class TaskViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            subtitleTextView.heightAnchor == 100
+            descriptionTextView.heightAnchor == 100
         ])
     }
     
