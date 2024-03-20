@@ -40,7 +40,9 @@ class TaskViewController: UIViewController {
                 stateLabel,
                 stateSegmentedControl,
                 dateLabel,
-                datePickerContainer
+                datePickerContainer,
+                colorLabel,
+                colorWellView
             ],
             isScrollabel: true,
             indicatorStyle: .black
@@ -49,6 +51,7 @@ class TaskViewController: UIViewController {
         stack.addPadding(32, after: titleTextField)
         stack.addPadding(32, after: descriptionTextView)
         stack.addPadding(32, after: stateSegmentedControl)
+        stack.addPadding(32, after: datePickerContainer)
         stack.onScroll = { [weak self] in
             self?.view?.endEditing(true)
         }
@@ -87,6 +90,7 @@ class TaskViewController: UIViewController {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        view.font = .systemFont(ofSize: 16)
         view.roundCorners()
         view.addShadow()
         return view
@@ -159,6 +163,29 @@ class TaskViewController: UIViewController {
         return view
     }()
     
+    private lazy var colorLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 18, weight: .bold)
+        lbl.textColor = .black
+        lbl.text = "Color"
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private lazy var colorWellView: UIColorWell = {
+        let well = UIColorWell()
+        well.translatesAutoresizingMaskIntoConstraints = false
+        well.addTarget(self, action: #selector(colorWellValueChanged), for: .valueChanged)
+        
+        NSLayoutConstraint.activate([
+            well.heightAnchor == 40,
+            well.widthAnchor == 40
+        ])
+        
+        return well
+    }()
+    
     init(viewModel: TaskViewControllerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -206,7 +233,15 @@ class TaskViewController: UIViewController {
         }
         
         viewModel.taskState.bind { [weak self] state in
-            self?.stateSegmentedControl.selectedSegmentIndex = state.rawValue
+            self?.stateSegmentedControl.selectedSegmentIndex = Int(state.rawValue)
+        }
+        
+        viewModel.taskDate.bind { [weak self] date in
+            self?.datePicker.date = date ?? Date()
+        }
+        
+        viewModel.color.bind { [weak self] color in
+            self?.colorWellView.selectedColor = color
         }
     }
     
@@ -240,11 +275,17 @@ class TaskViewController: UIViewController {
         viewModel.saveAction?(
             titleTextField.text ?? "",
             descriptionTextView.text,
-            TaskState(rawValue: stateSegmentedControl.selectedSegmentIndex) ?? .all,
-            datePicker.date
+            TaskState(rawValue: Int16(stateSegmentedControl.selectedSegmentIndex)) ?? .all,
+            datePicker.date,
+            colorWellView.selectedColor
         )
         dismiss(animated: true)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func colorWellValueChanged() {
+        self.viewModel.color.value = colorWellView.selectedColor!
     }
 }
 
@@ -252,7 +293,7 @@ class TaskViewController: UIViewController {
 struct TaskViewControllerPreview: PreviewProvider {
     static var previews: some View {
         let model = TaskViewControllerViewModel(
-            state: .update(task: Task()),
+            state: .add,
             completion: nil
         )
         let vc = TaskViewController(viewModel: model)

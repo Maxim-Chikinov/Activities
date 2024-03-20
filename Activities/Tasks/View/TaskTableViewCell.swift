@@ -17,6 +17,7 @@ class TaskTableViewCellViewModel {
     var subtitle = Box(String?(""))
     var date = Box(String?(""))
     var state = Box(String?(""))
+    var color = Box(UIColor.systemBlue)
 }
 
 class TaskTableViewCell: UITableViewCell {
@@ -73,6 +74,7 @@ class TaskTableViewCell: UITableViewCell {
         lbl.backgroundColor = UIColor(hexString: "E2F3FF")
         lbl.roundCorners(8)
         lbl.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        lbl.setContentHuggingPriority(.defaultHigh + 1, for: .horizontal)
         return lbl
     }()
     
@@ -88,7 +90,6 @@ class TaskTableViewCell: UITableViewCell {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
-        view.tintColor = UIColor(hexString: "9260F4")
         return view
     }()
     
@@ -125,6 +126,11 @@ class TaskTableViewCell: UITableViewCell {
         
         model.iconImage.bind { [weak self] image in
             self?.iconImageView.image = image
+        }
+        
+        model.color.bind { [weak self] color in
+            self?.imageContainer.backgroundColor = color.withAlphaComponent(0.4)
+            self?.iconImageView.tintColor = color
         }
     }
     

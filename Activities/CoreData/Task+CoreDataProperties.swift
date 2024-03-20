@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  Activities
 //
-//  Created by Chikinov Maxim on 19.03.2024.
+//  Created by Chikinov Maxim on 20.03.2024.
 //
 //
 
@@ -18,8 +18,10 @@ extension Task {
 
     @NSManaged public var date: Date?
     @NSManaged public var descripton: String?
-    @NSManaged public var title: String?
     @NSManaged public var taskId: UUID?
+    @NSManaged public var title: String?
+    @NSManaged public var color: NSObject?
+    @NSManaged public var state: Int16
     @NSManaged public var groups: NSSet?
 
 }

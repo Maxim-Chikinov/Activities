@@ -35,7 +35,7 @@ class TasksViewControllerViewModel {
         }
         
         taskTypeSegmenterAction = { [weak self] index in
-            let type = TaskState(rawValue: index) ?? .all
+            let type = TaskState(rawValue: Int16(index)) ?? .all
             self?.getData(taskType: type)
         }
         
@@ -59,6 +59,8 @@ class TasksViewControllerViewModel {
                 task.title.value = t.title
                 task.subtitle.value = t.descripton
                 task.date.value = t.date?.formatted()
+                task.color.value = t.color as? UIColor ?? .systemBlue
+                task.state.value = TaskState(rawValue: t.state)?.title
                 return task
             })
             taskCount.value = "\(self.tasks.value.count)"

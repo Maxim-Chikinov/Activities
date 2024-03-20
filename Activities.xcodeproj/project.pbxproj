@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E21344822BAA151400B9F2B0 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213447E2BAA151400B9F2B0 /* Task+CoreDataClass.swift */; };
-		E21344832BAA151400B9F2B0 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213447F2BAA151400B9F2B0 /* Task+CoreDataProperties.swift */; };
-		E21344842BAA151400B9F2B0 /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21344802BAA151400B9F2B0 /* Group+CoreDataClass.swift */; };
-		E21344852BAA151400B9F2B0 /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21344812BAA151400B9F2B0 /* Group+CoreDataProperties.swift */; };
 		E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0402BA597C900807D2A /* AppDelegate.swift */; };
 		E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0422BA597C900807D2A /* SceneDelegate.swift */; };
 		E213C0452BA597C900807D2A /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0442BA597C900807D2A /* GroupsViewController.swift */; };
@@ -50,13 +46,13 @@
 		E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF862BA8CE46003AD044 /* TaskState.swift */; };
 		E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */; };
 		E2BDEF8F2BA9A698003AD044 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */; };
+		E2E009C12BAB6DCF00DC2B8C /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */; };
+		E2E009C22BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */; };
+		E2E009C32BAB6DCF00DC2B8C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */; };
+		E2E009C42BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E213447E2BAA151400B9F2B0 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E213447F2BAA151400B9F2B0 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E21344802BAA151400B9F2B0 /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E21344812BAA151400B9F2B0 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E213C03D2BA597C900807D2A /* Activities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Activities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213C0402BA597C900807D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213C0422BA597C900807D2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +94,10 @@
 		E2BDEF862BA8CE46003AD044 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,10 +288,10 @@
 		E2BDEF8A2BA9A3F0003AD044 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E213447E2BAA151400B9F2B0 /* Task+CoreDataClass.swift */,
-				E213447F2BAA151400B9F2B0 /* Task+CoreDataProperties.swift */,
-				E21344802BAA151400B9F2B0 /* Group+CoreDataClass.swift */,
-				E21344812BAA151400B9F2B0 /* Group+CoreDataProperties.swift */,
+				E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */,
+				E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */,
+				E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */,
+				E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */,
 				E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */,
 				E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */,
 			);
@@ -372,24 +372,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E009C42BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift in Sources */,
 				E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */,
+				E2E009C22BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift in Sources */,
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
 				E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */,
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
-				E21344842BAA151400B9F2B0 /* Group+CoreDataClass.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
 				E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */,
 				E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */,
-				E21344822BAA151400B9F2B0 /* Task+CoreDataClass.swift in Sources */,
 				E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */,
-				E21344832BAA151400B9F2B0 /* Task+CoreDataProperties.swift in Sources */,
 				E213C0892BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
 				E213C08F2BA59CC900807D2A /* Double+Extension.swift in Sources */,
 				E213C0A42BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 				E213C0B42BA5A2B900807D2A /* GroupsViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
 				E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */,
+				E2E009C12BAB6DCF00DC2B8C /* Group+CoreDataClass.swift in Sources */,
 				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
 				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
@@ -399,6 +399,7 @@
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
 				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
+				E2E009C32BAB6DCF00DC2B8C /* Task+CoreDataClass.swift in Sources */,
 				E2BDEF692BA73E46003AD044 /* GroupsScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
 				E2BDEF842BA8C922003AD044 /* InsetTextField.swift in Sources */,
@@ -411,7 +412,6 @@
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
 				E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */,
-				E21344852BAA151400B9F2B0 /* Group+CoreDataProperties.swift in Sources */,
 				E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

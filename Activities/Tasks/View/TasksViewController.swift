@@ -121,8 +121,8 @@ class TasksViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let type = TaskState(rawValue: taskTypeSegmentedControl.selectedSegmentIndex) ?? .all
-        viewModel.getData(taskType: type)
+        let type = TaskState(rawValue: Int16(taskTypeSegmentedControl.selectedSegmentIndex))
+        viewModel.getData(taskType: type ?? .all)
     }
     
     override func viewDidLayoutSubviews() {
