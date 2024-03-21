@@ -52,9 +52,11 @@ class TasksViewController: CustomViewController {
         
         var types = TaskState.allCases
         types = types.reversed()
+        types.removeFirst()
         types.forEach { task in
             segmentedControl.insertSegment(withTitle: task.title, at: 0, animated: false)
         }
+        segmentedControl.insertSegment(withTitle: TaskState.all.title, at: 0, animated: false)
         segmentedControl.selectedSegmentIndex = 0
         
         segmentedControl.selectedSegmentTintColor = UIColor(hexString: "5F33E2")
@@ -121,8 +123,7 @@ class TasksViewController: CustomViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let type = TaskState(rawValue: Int16(taskTypeSegmentedControl.selectedSegmentIndex))
-        viewModel.getData(taskType: type ?? .all)
+        viewModel.getData(taskType: getSegmentType())
     }
     
     override func viewDidLayoutSubviews() {
@@ -141,7 +142,7 @@ class TasksViewController: CustomViewController {
         }
         
         viewModel.tasks.bind { [weak self] _ in
-            self?.tableView.reloadData()
+            self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
         }
     }
     
@@ -186,10 +187,21 @@ class TasksViewController: CustomViewController {
         ])
     }
     
+    private func getSegmentType() -> TaskState {
+        var selectedIndex = Int16(taskTypeSegmentedControl.selectedSegmentIndex)
+        switch selectedIndex {
+        case 0:
+            selectedIndex = 4
+        default:
+            selectedIndex -= 1
+        }
+        
+        return TaskState(rawValue: selectedIndex) ?? .all
+    }
+    
     @objc
     private func taskTypeSegmentedControlChanged(_ sender: UISegmentedControl) {
-        let selectedIndex = sender.selectedSegmentIndex
-        viewModel.taskTypeSegmenterAction?(selectedIndex)
+        viewModel.taskTypeSegmenterAction?(Int(getSegmentType().rawValue))
     }
     
     @objc
@@ -241,7 +253,7 @@ extension TasksViewController: UITableViewDelegate {
 
 extension TasksViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("\(searchBar.text ?? "")")
+        viewModel.getData(taskType: getSegmentType(), search: searchBar.text)
     }
 }
 

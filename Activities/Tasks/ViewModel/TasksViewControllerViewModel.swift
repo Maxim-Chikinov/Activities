@@ -46,10 +46,24 @@ class TasksViewControllerViewModel {
         }
     }
     
-    func getData(taskType: TaskState) {
+    func getData(taskType: TaskState, search: String? = nil) {
         let fetchRequest = Task.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(Task.date), ascending: true)
         fetchRequest.sortDescriptors = [sort]
+        
+        var search = search?.lowercased()
+        
+        if taskType == .all {
+            if let search, !search.isEmpty {
+                fetchRequest.predicate = NSPredicate(format: "title CONTAINS %@", search)
+            }
+        } else {
+            if let search, !search.isEmpty {
+                fetchRequest.predicate = NSPredicate(format: "state == %i AND title CONTAINS %@", taskType.rawValue, search)
+            } else {
+                fetchRequest.predicate = NSPredicate(format: "state == %i", taskType.rawValue)
+            }
+        }
         
         do {
             let tasks = try managedObjectContext.fetch(fetchRequest)

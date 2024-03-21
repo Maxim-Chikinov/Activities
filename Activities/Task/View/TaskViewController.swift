@@ -112,6 +112,8 @@ class TaskViewController: UIViewController {
         
         var types = TaskState.allCases
         types = types.reversed()
+        types.removeFirst()
+        
         types.forEach { task in
             segmentedControl.insertSegment(withTitle: task.title, at: 0, animated: false)
         }

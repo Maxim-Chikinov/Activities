@@ -8,21 +8,21 @@
 import Foundation
 
 enum TaskState: Int16, CaseIterable {
-    case all
     case todo
     case inProgress
     case complete
+    case all
     
     var title: String {
         switch self {
-        case .all:
-            return "All"
         case .todo:
             return "To-do"
         case .inProgress:
             return "In Progress"
         case .complete:
             return "Complete"
+        case .all:
+            return "All"
         }
     }
 }
