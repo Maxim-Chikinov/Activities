@@ -2,7 +2,7 @@
 //  Group+CoreDataProperties.swift
 //  Activities
 //
-//  Created by Chikinov Maxim on 20.03.2024.
+//  Created by Chikinov Maxim on 21.03.2024.
 //
 //
 

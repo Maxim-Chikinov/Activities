@@ -61,6 +61,7 @@ class TasksViewControllerViewModel {
                 task.date.value = t.date?.formatted()
                 task.color.value = t.color as? UIColor ?? .systemBlue
                 task.state.value = TaskState(rawValue: t.state)?.title
+                task.iconImage.value = UIImage(data: t.iconData ?? Data()) ?? UIImage(named: "taskImg")?.template
                 return task
             })
             taskCount.value = "\(self.tasks.value.count)"

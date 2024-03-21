@@ -46,10 +46,13 @@
 		E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF862BA8CE46003AD044 /* TaskState.swift */; };
 		E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */; };
 		E2BDEF8F2BA9A698003AD044 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */; };
-		E2E009C12BAB6DCF00DC2B8C /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */; };
-		E2E009C22BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */; };
-		E2E009C32BAB6DCF00DC2B8C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */; };
-		E2E009C42BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */; };
+		E2E009C92BAC197300DC2B8C /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */; };
+		E2E009CA2BAC197300DC2B8C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */; };
+		E2E009CB2BAC197300DC2B8C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */; };
+		E2E009CC2BAC197300DC2B8C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */; };
+		E2E009CF2BAC1BA300DC2B8C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009CE2BAC1BA300DC2B8C /* SnapKit */; };
+		E2E009D12BAC1BA300DC2B8C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */; };
+		E2E009D32BAC1BF700DC2B8C /* TaskIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,10 +97,11 @@
 		E2BDEF862BA8CE46003AD044 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
-		E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E009CF2BAC1BA300DC2B8C /* SnapKit in Frameworks */,
+				E2E009D12BAC1BA300DC2B8C /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +254,7 @@
 				E2BDEF7F2BA857BC003AD044 /* CustomViewController.swift */,
 				E2BDEF812BA8BD47003AD044 /* Stack.swift */,
 				E2BDEF832BA8C922003AD044 /* InsetTextField.swift */,
+				E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,10 +295,10 @@
 		E2BDEF8A2BA9A3F0003AD044 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E2E009BD2BAB6DCF00DC2B8C /* Group+CoreDataClass.swift */,
-				E2E009BE2BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift */,
-				E2E009BF2BAB6DCF00DC2B8C /* Task+CoreDataClass.swift */,
-				E2E009C02BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift */,
+				E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */,
+				E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */,
+				E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */,
+				E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */,
 				E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */,
 				E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */,
 			);
@@ -315,6 +322,8 @@
 			);
 			name = Activities;
 			packageProductDependencies = (
+				E2E009CE2BAC1BA300DC2B8C /* SnapKit */,
+				E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */,
 			);
 			productName = Activities;
 			productReference = E213C03D2BA597C900807D2A /* Activities.app */;
@@ -345,6 +354,7 @@
 			);
 			mainGroup = E213C0342BA597C900807D2A;
 			packageReferences = (
+				E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = E213C03E2BA597C900807D2A /* Products */;
 			projectDirPath = "";
@@ -372,9 +382,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E009C42BAB6DCF00DC2B8C /* Task+CoreDataProperties.swift in Sources */,
+				E2E009CC2BAC197300DC2B8C /* Task+CoreDataProperties.swift in Sources */,
 				E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */,
-				E2E009C22BAB6DCF00DC2B8C /* Group+CoreDataProperties.swift in Sources */,
+				E2E009CA2BAC197300DC2B8C /* Group+CoreDataProperties.swift in Sources */,
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
 				E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */,
@@ -389,7 +399,7 @@
 				E213C0B42BA5A2B900807D2A /* GroupsViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
 				E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */,
-				E2E009C12BAB6DCF00DC2B8C /* Group+CoreDataClass.swift in Sources */,
+				E2E009C92BAC197300DC2B8C /* Group+CoreDataClass.swift in Sources */,
 				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
 				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
@@ -399,7 +409,7 @@
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
 				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
-				E2E009C32BAB6DCF00DC2B8C /* Task+CoreDataClass.swift in Sources */,
+				E2E009CB2BAC197300DC2B8C /* Task+CoreDataClass.swift in Sources */,
 				E2BDEF692BA73E46003AD044 /* GroupsScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
 				E2BDEF842BA8C922003AD044 /* InsetTextField.swift in Sources */,
@@ -412,6 +422,7 @@
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
 				E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */,
+				E2E009D32BAC1BF700DC2B8C /* TaskIconView.swift in Sources */,
 				E213C0432BA597C900807D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +636,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2E009CE2BAC1BA300DC2B8C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E213C0492BA597C900807D2A /* Activities.xcdatamodeld */ = {

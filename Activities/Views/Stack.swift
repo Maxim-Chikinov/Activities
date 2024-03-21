@@ -10,6 +10,7 @@ import UIKit
 final class Stack: UIView {
     
     var axis: NSLayoutConstraint.Axis = .vertical
+    var distribution: UIStackView.Distribution = .fill
     var margins: UIEdgeInsets = .zero
     var spacing: CGFloat = 0
     var views: [UIView] = []
@@ -22,7 +23,7 @@ final class Stack: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = axis
         stack.spacing = spacing
-        stack.distribution = .fill
+        stack.distribution = distribution
         return stack
     }()
     
@@ -46,6 +47,7 @@ final class Stack: UIView {
     
     init(
         axis: NSLayoutConstraint.Axis,
+        distribution: UIStackView.Distribution = .fill,
         margins: UIEdgeInsets,
         spacing: CGFloat,
         views: [UIView] = [],
@@ -53,6 +55,7 @@ final class Stack: UIView {
         indicatorStyle: UIScrollView.IndicatorStyle = .black
     ) {
         self.axis = axis
+        self.distribution = distribution
         self.margins = margins
         self.spacing = spacing
         self.views = views

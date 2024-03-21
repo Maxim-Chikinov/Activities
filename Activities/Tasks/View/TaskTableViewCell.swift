@@ -78,18 +78,9 @@ class TaskTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var imageContainer: UIView = {
-        let view = UIView()
+    private lazy var iconView: TaskIconView = {
+        let view = TaskIconView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hexString: "EDE4FF")
-        view.roundCorners(6)
-        return view
-    }()
-    
-    private lazy var iconImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -125,12 +116,11 @@ class TaskTableViewCell: UITableViewCell {
         }
         
         model.iconImage.bind { [weak self] image in
-            self?.iconImageView.image = image
+            self?.iconView.icon = image
         }
         
         model.color.bind { [weak self] color in
-            self?.imageContainer.backgroundColor = color.withAlphaComponent(0.4)
-            self?.iconImageView.tintColor = color
+            self?.iconView.color = color
         }
     }
     
@@ -141,11 +131,9 @@ class TaskTableViewCell: UITableViewCell {
             subtitleLabel,
             titleLabel,
             dateImageView, dateLabel,
-            imageContainer,
+            iconView,
             stateLabel
         )
-        
-        imageContainer.addSubview(iconImageView)
     }
     
     private func setupConstraints() {
@@ -159,13 +147,13 @@ class TaskTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor == containerView.topAnchor + 18,
             subtitleLabel.leadingAnchor == containerView.leadingAnchor + 16,
-            subtitleLabel.trailingAnchor == imageContainer.leadingAnchor - 16,
+            subtitleLabel.trailingAnchor == iconView.leadingAnchor - 16,
         ])
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor == subtitleLabel.bottomAnchor + 8,
             titleLabel.leadingAnchor == containerView.leadingAnchor + 16,
-            titleLabel.trailingAnchor == imageContainer.leadingAnchor - 16
+            titleLabel.trailingAnchor == iconView.leadingAnchor - 16
         ])
         
         NSLayoutConstraint.activate([
@@ -188,17 +176,10 @@ class TaskTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            imageContainer.topAnchor == containerView.topAnchor + 16,
-            imageContainer.trailingAnchor == containerView.trailingAnchor - 16,
-            imageContainer.widthAnchor == 30,
-            imageContainer.heightAnchor == 30
-        ])
-        
-        NSLayoutConstraint.activate([
-            iconImageView.topAnchor == imageContainer.topAnchor + 4,
-            iconImageView.leadingAnchor == imageContainer.leadingAnchor + 4,
-            iconImageView.bottomAnchor == imageContainer.bottomAnchor - 4,
-            iconImageView.trailingAnchor == imageContainer.trailingAnchor - 4
+            iconView.topAnchor == containerView.topAnchor + 16,
+            iconView.trailingAnchor == containerView.trailingAnchor - 16,
+            iconView.widthAnchor == 30,
+            iconView.heightAnchor == 30
         ])
     }
 }
@@ -208,6 +189,11 @@ struct TaskTableViewCellPreview: PreviewProvider {
     static var previews: some View {
         let cell = TaskTableViewCell()
         let model = TaskTableViewCellViewModel()
+        model.title.value = "title"
+        model.subtitle.value = "subtitle"
+        model.state.value = "To-do"
+        model.date.value = "13.02.2024 12:00"
+        model.color.value = .brown
         cell.configure(model: model)
         
         return cell
@@ -216,4 +202,3 @@ struct TaskTableViewCellPreview: PreviewProvider {
             .padding(16)
     }
 }
-

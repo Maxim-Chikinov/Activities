@@ -22,12 +22,13 @@ class TaskViewControllerViewModel {
     
     var title = Box(String?(""))
     var buttonTitle = Box("")
-    var saveAction: ((_ title: String, _ description: String, _ state: TaskState, _ date: Date, _ color: UIColor?) -> Void)?
+    var saveAction: ((_ title: String, _ description: String, _ state: TaskState, _ date: Date, _ color: UIColor?, _ icon: UIImage?) -> Void)?
     var taskTitle = Box(String?(""))
     var taskDescription = Box(String?(""))
     var taskState = Box(TaskState.all)
     var taskDate = Box(Date?(Date()))
     var color = Box(UIColor?(.systemBlue))
+    var icon = Box(UIImage(named: "taskImg"))
     
     let managedObjectContext = CoreDataStack.shared.managedObjectContext
     
@@ -42,11 +43,12 @@ class TaskViewControllerViewModel {
             taskTitle.value = task.title
             taskDescription.value = task.descripton
             taskDate.value = task.date
-            color.value = task.color as? UIColor
             taskState.value = TaskState(rawValue: task.state) ?? .all
+            color.value = task.color as? UIColor
+            icon.value = UIImage(data: task.iconData ?? Data())
         }
         
-        saveAction = { [weak self] title, description, taskState, date, color in
+        saveAction = { [weak self] title, description, taskState, date, color, icon in
             guard let self else { return }
             
             let taskEntity: Task
@@ -64,6 +66,7 @@ class TaskViewControllerViewModel {
             taskEntity.setValue(date, forKey: #keyPath(Task.date))
             taskEntity.setValue(color, forKey: #keyPath(Task.color))
             taskEntity.setValue(taskState.rawValue, forKey: #keyPath(Task.state))
+            taskEntity.setValue(icon?.pngData(), forKey: #keyPath(Task.iconData))
             
             do {
                 try self.managedObjectContext.save()

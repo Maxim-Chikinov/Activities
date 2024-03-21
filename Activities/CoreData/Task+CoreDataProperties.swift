@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  Activities
 //
-//  Created by Chikinov Maxim on 20.03.2024.
+//  Created by Chikinov Maxim on 21.03.2024.
 //
 //
 
@@ -16,12 +16,13 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
+    @NSManaged public var color: NSObject?
     @NSManaged public var date: Date?
     @NSManaged public var descripton: String?
+    @NSManaged public var state: Int16
     @NSManaged public var taskId: UUID?
     @NSManaged public var title: String?
-    @NSManaged public var color: NSObject?
-    @NSManaged public var state: Int16
+    @NSManaged public var iconData: Data?
     @NSManaged public var groups: NSSet?
 
 }

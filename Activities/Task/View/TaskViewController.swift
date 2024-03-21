@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import SnapKit
 
 class TaskViewController: UIViewController {
     
@@ -41,8 +42,7 @@ class TaskViewController: UIViewController {
                 stateSegmentedControl,
                 dateLabel,
                 datePickerContainer,
-                colorLabel,
-                colorWellView
+                iconStack
             ],
             isScrollabel: true,
             indicatorStyle: .black
@@ -163,6 +163,22 @@ class TaskViewController: UIViewController {
         return view
     }()
     
+    private lazy var iconStack: Stack = {
+        let stack = Stack(
+            axis: .horizontal,
+            distribution: .equalCentering,
+            margins: .init(top: 0, left: 50, bottom: 0, right: 50),
+            spacing: 16,
+            views: [
+                colorLabel,
+                colorWellView,
+                iconLabel,
+                iconView
+            ]
+        )
+        return stack
+    }()
+    
     private lazy var colorLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -185,6 +201,39 @@ class TaskViewController: UIViewController {
         
         return well
     }()
+    
+    private lazy var iconLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 18, weight: .bold)
+        lbl.textColor = .black
+        lbl.text = "Icon"
+        return lbl
+    }()
+    
+    private lazy var iconView: TaskIconView = {
+        let view = TaskIconView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addAction { [weak self] in
+            guard let self else { return }
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+                self.imagePicker.delegate = self
+                self.imagePicker.sourceType = .savedPhotosAlbum
+                self.imagePicker.allowsEditing = false
+                
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        NSLayoutConstraint.activate([
+            view.heightAnchor == 40,
+            view.widthAnchor == 40
+        ])
+        
+        return view
+    }()
+    
+    private lazy var imagePicker = UIImagePickerController()
     
     init(viewModel: TaskViewControllerViewModel) {
         self.viewModel = viewModel
@@ -242,6 +291,11 @@ class TaskViewController: UIViewController {
         
         viewModel.color.bind { [weak self] color in
             self?.colorWellView.selectedColor = color
+            self?.iconView.color = color
+        }
+        
+        viewModel.icon.bind { [weak self] icon in
+            self?.iconView.icon = icon
         }
     }
     
@@ -277,7 +331,8 @@ class TaskViewController: UIViewController {
             descriptionTextView.text,
             TaskState(rawValue: Int16(stateSegmentedControl.selectedSegmentIndex)) ?? .all,
             datePicker.date,
-            colorWellView.selectedColor
+            colorWellView.selectedColor,
+            iconView.icon
         )
         dismiss(animated: true)
         navigationController?.popViewController(animated: true)
@@ -285,7 +340,19 @@ class TaskViewController: UIViewController {
     
     @objc
     private func colorWellValueChanged() {
-        self.viewModel.color.value = colorWellView.selectedColor!
+        self.viewModel.color.value = colorWellView.selectedColor
+        iconView.color = colorWellView.selectedColor
+    }
+}
+
+extension TaskViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true, completion: { () -> Void in
+            guard let image = info[.originalImage] as? UIImage else {
+                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            }
+            self.iconView.icon = image
+        })
     }
 }
 
