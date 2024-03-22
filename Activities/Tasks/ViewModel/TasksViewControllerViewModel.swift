@@ -23,7 +23,7 @@ class TasksViewControllerViewModel {
     var tasks = Box([TaskTableViewCellViewModel]())
     var addTaskAction: (() -> Void)?
     var taskSelectionAction: ((Task) -> Void)?
-    var taskTypeSegmenterAction: ((Int) -> Void)?
+    var taskTypeSegmenterAction: ((_ state: TaskState, _ searchText: String) -> Void)?
     
     let managedObjectContext = CoreDataStack.shared.managedObjectContext
     
@@ -34,9 +34,8 @@ class TasksViewControllerViewModel {
             }
         }
         
-        taskTypeSegmenterAction = { [weak self] index in
-            let type = TaskState(rawValue: Int16(index)) ?? .all
-            self?.getData(taskType: type)
+        taskTypeSegmenterAction = { [weak self] state, searchText in
+            self?.getData(taskType: state, search: searchText)
         }
         
         taskSelectionAction = { [weak self] task in
@@ -51,19 +50,22 @@ class TasksViewControllerViewModel {
         let sort = NSSortDescriptor(key: #keyPath(Task.date), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         
-        var search = search?.lowercased()
+        let search = search?.lowercased()
         
-        if taskType == .all {
-            if let search, !search.isEmpty {
-                fetchRequest.predicate = NSPredicate(format: "title CONTAINS %@", search)
-            }
-        } else {
-            if let search, !search.isEmpty {
-                fetchRequest.predicate = NSPredicate(format: "state == %i AND title CONTAINS %@", taskType.rawValue, search)
-            } else {
-                fetchRequest.predicate = NSPredicate(format: "state == %i", taskType.rawValue)
-            }
+        var predicates: [NSPredicate] = []
+        
+        if taskType != .all {
+            let statePredicate = NSPredicate(format: "state == %i", taskType.rawValue)
+            predicates.append(statePredicate)
         }
+        
+        if search?.isEmpty == false {
+            let titlePredicate = NSPredicate(format: "title CONTAINS %@", search ?? "")
+            predicates.append(titlePredicate)
+        }
+        
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        fetchRequest.predicate = compoundPredicate
         
         do {
             let tasks = try managedObjectContext.fetch(fetchRequest)

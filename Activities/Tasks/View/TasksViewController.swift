@@ -201,7 +201,7 @@ class TasksViewController: CustomViewController {
     
     @objc
     private func taskTypeSegmentedControlChanged(_ sender: UISegmentedControl) {
-        viewModel.taskTypeSegmenterAction?(Int(getSegmentType().rawValue))
+        viewModel.taskTypeSegmenterAction?(getSegmentType(), searchBar.text ?? "")
     }
     
     @objc
