@@ -141,8 +141,12 @@ class TasksViewController: CustomViewController {
             self?.taskGroupsCountLabel.text = text
         }
         
-        viewModel.tasks.bind { [weak self] _ in
+        viewModel.updateTasksAction = { [weak self] in
             self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        }
+        
+        viewModel.deleteTaskAction = { [weak self] indexPath in
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
@@ -201,23 +205,23 @@ class TasksViewController: CustomViewController {
     
     @objc
     private func taskTypeSegmentedControlChanged(_ sender: UISegmentedControl) {
-        viewModel.taskTypeSegmenterAction?(getSegmentType(), searchBar.text ?? "")
+        viewModel.getData(taskType: getSegmentType(), search: searchBar.text)
     }
     
     @objc
     private func addTaskTap() {
-        viewModel.addTaskAction?()
+        viewModel.addTask()
     }
 }
 
 extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tasks.value.count
+        return viewModel.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseID) as! TaskTableViewCell
-        let model = viewModel.tasks.value[indexPath.row]
+        let model = viewModel.tasks[indexPath.row]
         cell.configure(model: model)
         return cell
     }
@@ -229,8 +233,7 @@ extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "", handler: { [weak self] _,_,_ in
             guard let self else { return }
-            let task = self.viewModel.tasks.value[indexPath.row].task
-            self.viewModel.delete(task: task)
+            self.viewModel.delete(indexPath: indexPath)
         })
         
         deleteAction.image = UIImage(systemName: "trash.fill")?.withTintColor(UIColor(hexString: "9260F4"), renderingMode: .alwaysOriginal)
@@ -245,8 +248,8 @@ extension TasksViewController: UITableViewDataSource {
 
 extension TasksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.tasks.value[indexPath.row]
-        viewModel.taskSelectionAction?(model.task)
+        let model = viewModel.tasks[indexPath.row]
+        viewModel.selectTask(task: model.task)
         view.endEditing(true)
     }
 }

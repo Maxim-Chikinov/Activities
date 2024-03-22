@@ -20,56 +20,43 @@ class TasksViewControllerViewModel {
     
     var taskTitle = Box("Tasks")
     var taskCount = Box("")
-    var tasks = Box([TaskTableViewCellViewModel]())
-    var addTaskAction: (() -> Void)?
-    var taskSelectionAction: ((Task) -> Void)?
-    var taskTypeSegmenterAction: ((_ state: TaskState, _ searchText: String) -> Void)?
+    var tasks = [TaskTableViewCellViewModel]()
+    var updateTasksAction: (() -> Void)?
+    var deleteTaskAction: ((IndexPath) -> Void)?
     
     let managedObjectContext = CoreDataStack.shared.managedObjectContext
     
-    init() {
-        addTaskAction = { [weak self] in
-            self?.coordinator?.addTask { [weak self] in
-                self?.getData(taskType: .all)
-            }
-        }
-        
-        taskTypeSegmenterAction = { [weak self] state, searchText in
-            self?.getData(taskType: state, search: searchText)
-        }
-        
-        taskSelectionAction = { [weak self] task in
-            self?.coordinator?.goToTask(task: task, completion: { [weak self] in
-                self?.getData(taskType: .all)
-            })
-        }
-    }
+    init() {}
     
     func getData(taskType: TaskState, search: String? = nil) {
         let fetchRequest = Task.fetchRequest()
+        
+        // Add sort
         let sort = NSSortDescriptor(key: #keyPath(Task.date), ascending: true)
         fetchRequest.sortDescriptors = [sort]
         
-        let search = search?.lowercased()
-        
+        // Add predicates
         var predicates: [NSPredicate] = []
         
+        // State predicate
         if taskType != .all {
             let statePredicate = NSPredicate(format: "state == %i", taskType.rawValue)
             predicates.append(statePredicate)
         }
         
-        if search?.isEmpty == false {
-            let titlePredicate = NSPredicate(format: "title CONTAINS %@", search ?? "")
+        // Search predicate
+        if let search, !search.isEmpty {
+            let titlePredicate = NSPredicate(format: "title CONTAINS[cd] %@", search)
             predicates.append(titlePredicate)
         }
         
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         fetchRequest.predicate = compoundPredicate
         
+        // Fetch
         do {
             let tasks = try managedObjectContext.fetch(fetchRequest)
-            self.tasks.value = tasks.map({ t in
+            self.tasks = tasks.map({ t in
                 let task = TaskTableViewCellViewModel()
                 task.task = t
                 task.title.value = t.title
@@ -80,21 +67,35 @@ class TasksViewControllerViewModel {
                 task.iconImage.value = UIImage(data: t.iconData ?? Data()) ?? UIImage(named: "taskImg")?.template
                 return task
             })
-            taskCount.value = "\(self.tasks.value.count)"
+            taskCount.value = "\(self.tasks.count)"
+            updateTasksAction?()
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    func delete(task: Task, completion: (() -> ())? = nil) {
+    func addTask() {
+        coordinator?.addTask { [weak self] in
+            self?.getData(taskType: .all)
+        }
+    }
+    
+    func selectTask(task: Task) {
+        coordinator?.goToTask(task: task, completion: { [weak self] in
+            self?.getData(taskType: .all)
+        })
+    }
+    
+    func delete(indexPath: IndexPath) {
         do {
+            let task = tasks[indexPath.row].task
             managedObjectContext.delete(task)
             try managedObjectContext.save()
             
-            tasks.value.removeAll(where: { $0.task.taskId == task.taskId })
-            taskCount.value = "\(self.tasks.value.count)"
+            tasks.removeAll(where: { $0.task.taskId == task.taskId })
+            taskCount.value = "\(self.tasks.count)"
             
-            completion?()
+            deleteTaskAction?(indexPath)
         } catch {
             print(error.localizedDescription)
         }
