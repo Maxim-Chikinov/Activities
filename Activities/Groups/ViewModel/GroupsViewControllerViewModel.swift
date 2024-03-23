@@ -8,8 +8,8 @@
 import UIKit
 
 protocol GroupsScreenNavigation : AnyObject{
-    func goToTasks()
-    func goToChangeTask()
+    func goToGroup()
+    func goToAddGroup()
 }
 
 class GroupsViewControllerViewModel {
@@ -22,17 +22,18 @@ class GroupsViewControllerViewModel {
     
     func getData() {
         taskGroups.removeAll()
-        for _ in 0...10 {
-            let group = TaskGroupTableViewCellViewModel()
-            group.selectButtonAction = { [weak self] in
-                self?.coordinator?.goToTasks()
-            }
-            group.changeButtonAction = { [weak self] in
-                self?.coordinator?.goToChangeTask()
-            }
-            taskGroups.append(group)
-        }
-        
         taskGroupsCount.value = "\(taskGroups.count)"
+    }
+    
+    func delete(indexPath: IndexPath) {
+        
+    }
+    
+    func openAddTasks() {
+        coordinator?.goToAddGroup()
+    }
+    
+    func openTask() {
+        coordinator?.goToGroup()
     }
 }

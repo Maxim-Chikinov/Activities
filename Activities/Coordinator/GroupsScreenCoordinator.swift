@@ -45,15 +45,18 @@ class GroupsScreenCoordinator: Coordinator {
 }
 
 extension GroupsScreenCoordinator: GroupsScreenNavigation {
-    func goToTasks() {
-        let tasksVC = UIViewController()
-        tasksVC.view.backgroundColor = .white
+    func goToGroup() {
+        let viewModel = GroupViewModel(state: .edite)
+        viewModel.coordinator = self
+        let tasksVC = GroupViewController(viewModel: viewModel)
         screenNavigation.pushViewController(tasksVC, animated: true)
     }
     
-    func goToChangeTask() {
-        let changeVC = UIViewController()
-        changeVC.view.backgroundColor = .white
-        screenNavigation.present(changeVC, animated: true)
+    func goToAddGroup() {
+        let viewModel = GroupViewModel(state: .add)
+        viewModel.coordinator = self
+        let tasksVC = GroupViewController(viewModel: viewModel)
+        let nc = UINavigationController(rootViewController: tasksVC)
+        screenNavigation.present(nc, animated: true)
     }
 }

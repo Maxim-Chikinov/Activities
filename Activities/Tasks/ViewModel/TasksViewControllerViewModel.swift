@@ -16,7 +16,15 @@ protocol TasksScreenNavigation : AnyObject{
 
 class TasksViewControllerViewModel {
     
+    enum State {
+        case allTasks
+        case group(tasks: [Task])
+        case select
+    }
+    
     weak var coordinator: TasksScreenNavigation?
+    
+    var state: State = .allTasks
     
     var taskTitle = Box("Tasks")
     var taskCount = Box("")
@@ -26,7 +34,9 @@ class TasksViewControllerViewModel {
     
     let managedObjectContext = CoreDataStack.shared.managedObjectContext
     
-    init() {}
+    init(state: State) {
+        self.state = state
+    }
     
     func getData(taskType: TaskState, search: String? = nil) {
         let fetchRequest = Task.fetchRequest()
@@ -48,6 +58,13 @@ class TasksViewControllerViewModel {
         if let search, !search.isEmpty {
             let titlePredicate = NSPredicate(format: "title CONTAINS[cd] %@", search)
             predicates.append(titlePredicate)
+        }
+        
+        // Tasks
+        if case .group(let tasks) = state {
+            let ids = tasks.map { $0.taskId }
+            let taskPredicate = NSPredicate(format: "taskId in %@", ids)
+            predicates.append(taskPredicate)
         }
         
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

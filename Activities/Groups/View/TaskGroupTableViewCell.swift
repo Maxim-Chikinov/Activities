@@ -12,7 +12,6 @@ class TaskGroupTableViewCellViewModel {
     var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
     var title = Box("Title")
     var subtitle = Box("Subtitle")
-    var changeButtonAction: (() -> ())? = nil
     var selectButtonAction: (() -> ())? = nil
 }
 
@@ -61,19 +60,6 @@ class TaskGroupTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    private lazy var changeButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setImage(
-            UIImage(named: "changeImg")?.withRenderingMode(.alwaysTemplate),
-            for: .normal
-        )
-        btn.backgroundColor = .black.withAlphaComponent(0.03)
-        btn.tintColor = UIColor(hexString: "AB94FF")
-        btn.roundCorners()
-        return btn
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -100,10 +86,6 @@ class TaskGroupTableViewCell: UITableViewCell {
         model.subtitle.bind { [weak self] text in
             self?.subtitleLabel.text = text
         }
-        
-        changeButton.addAction {
-            model.changeButtonAction?()
-        }
     }
     
     private func setupSubviews() {
@@ -112,8 +94,7 @@ class TaskGroupTableViewCell: UITableViewCell {
         containerView.addSubviews(
             imageContainer,
             titleLabel,
-            subtitleLabel,
-            changeButton
+            subtitleLabel
         )
         
         imageContainer.addSubview(iconImageView)
@@ -144,21 +125,14 @@ class TaskGroupTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor == containerView.topAnchor + 22,
             titleLabel.leadingAnchor == imageContainer.trailingAnchor + 16,
-            titleLabel.trailingAnchor == changeButton.leadingAnchor - 16
+            titleLabel.trailingAnchor == trailingAnchor - 16
         ])
         
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor == titleLabel.bottomAnchor + 4,
             subtitleLabel.leadingAnchor == imageContainer.trailingAnchor + 16,
-            subtitleLabel.trailingAnchor == changeButton.leadingAnchor - 16,
+            subtitleLabel.trailingAnchor == trailingAnchor - 16,
             subtitleLabel.bottomAnchor <= containerView.bottomAnchor - 16
-        ])
-        
-        NSLayoutConstraint.activate([
-            changeButton.widthAnchor == 32,
-            changeButton.heightAnchor == 32,
-            changeButton.centerYAnchor == containerView.centerYAnchor,
-            changeButton.trailingAnchor == containerView.trailingAnchor - 24
         ])
     }
 }

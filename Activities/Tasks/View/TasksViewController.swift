@@ -268,7 +268,7 @@ struct TasksViewControllerPreview: PreviewProvider {
             tabBar: UITabBarController()
         )
         
-        let model = TasksViewControllerViewModel()
+        let model = TasksViewControllerViewModel(state: .allTasks)
         model.coordinator = coordinator
         let vc = TasksViewController(viewModel: model)
         let nc = UINavigationController(rootViewController: vc)

@@ -30,6 +30,8 @@
 		E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */; };
 		E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */; };
 		E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */; };
+		E280C81A2BAE249E00130457 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C8192BAE249E00130457 /* GroupViewModel.swift */; };
+		E280C81D2BAE24BB00130457 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C81C2BAE24BB00130457 /* GroupViewController.swift */; };
 		E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF632BA73AB7003AD044 /* Coordinator.swift */; };
 		E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */; };
 		E2BDEF692BA73E46003AD044 /* GroupsScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */; };
@@ -81,6 +83,8 @@
 		E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		E280C8192BAE249E00130457 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		E280C81C2BAE24BB00130457 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		E2BDEF632BA73AB7003AD044 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsScreenCoordinator.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				E2BDEF652BA73ABE003AD044 /* Coordinator */,
 				E2BDEF752BA77B01003AD044 /* Views */,
 				E213C0AA2BA59E3A00807D2A /* Groups */,
+				E280C8162BAE247000130457 /* Group */,
 				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
 				E2BDEF782BA84533003AD044 /* Task */,
 				E213C0AE2BA5A24C00807D2A /* Utilities */,
@@ -210,13 +215,38 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E280C8162BAE247000130457 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				E280C8172BAE248700130457 /* ViewModel */,
+				E280C8182BAE248D00130457 /* View */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		E280C8172BAE248700130457 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E280C8192BAE249E00130457 /* GroupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E280C8182BAE248D00130457 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E280C81C2BAE24BB00130457 /* GroupViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E2BDEF652BA73ABE003AD044 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				E2BDEF632BA73AB7003AD044 /* Coordinator.swift */,
 				E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */,
-				E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */,
 				E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */,
+				E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -387,6 +417,7 @@
 				E2E009CA2BAC197300DC2B8C /* Group+CoreDataProperties.swift in Sources */,
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
+				E280C81A2BAE249E00130457 /* GroupViewModel.swift in Sources */,
 				E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */,
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
@@ -417,6 +448,7 @@
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
 				E2BDEF772BA77B0A003AD044 /* CustomSegmentedControl.swift in Sources */,
 				E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */,
+				E280C81D2BAE24BB00130457 /* GroupViewController.swift in Sources */,
 				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
 				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,

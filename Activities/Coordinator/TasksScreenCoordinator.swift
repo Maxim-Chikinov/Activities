@@ -19,7 +19,7 @@ class TasksScreenCoordinator: Coordinator {
     
     // Tasks Screen
     private lazy var tasksModule: (viewModel: TasksViewControllerViewModel, controller: TasksViewController) = {
-        let viewModel = TasksViewControllerViewModel()
+        let viewModel = TasksViewControllerViewModel(state: .allTasks)
         viewModel.coordinator = self
         let viewController = TasksViewController(viewModel: viewModel)
         viewController.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.fill")

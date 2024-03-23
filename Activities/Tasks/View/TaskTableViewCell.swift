@@ -12,11 +12,11 @@ import SwiftUI
 class TaskTableViewCellViewModel {
     var task = Task()
     
-    var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
     var title = Box(String?(""))
     var subtitle = Box(String?(""))
     var date = Box(String?(""))
     var state = Box(String?(""))
+    var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
     var color = Box(UIColor.systemBlue)
 }
 
