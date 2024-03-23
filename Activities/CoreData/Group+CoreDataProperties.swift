@@ -2,7 +2,7 @@
 //  Group+CoreDataProperties.swift
 //  Activities
 //
-//  Created by Chikinov Maxim on 21.03.2024.
+//  Created by Chikinov Maxim on 23.03.2024.
 //
 //
 
@@ -16,6 +16,9 @@ extension Group {
         return NSFetchRequest<Group>(entityName: "Group")
     }
 
+    @NSManaged public var color: NSObject?
+    @NSManaged public var icon: Data?
+    @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
     @NSManaged public var tasks: NSSet?
 

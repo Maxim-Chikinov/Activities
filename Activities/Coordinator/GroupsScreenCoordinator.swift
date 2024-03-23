@@ -19,21 +19,17 @@ class GroupsScreenCoordinator: Coordinator {
     // Context
     let screenNavigation = UINavigationController()
     
-    // Groups Screen
-    private lazy var groupsModule: (viewModel: GroupsViewControllerViewModel, controller: GroupsViewController) = {
+    init(navigationController: UINavigationController, tabBar: UITabBarController) {
+        self.navigationController = navigationController
+        self.tabBar = tabBar
+        
         let viewModel = GroupsViewControllerViewModel()
         viewModel.coordinator = self
         let viewController = GroupsViewController(viewModel: viewModel)
         viewController.tabBarItem.image = UIImage(systemName: "house.fill")
         viewController.tabBarItem.title = "Groups"
-        return (viewModel, viewController)
-    }()
-    
-    init(navigationController: UINavigationController, tabBar: UITabBarController) {
-        self.navigationController = navigationController
-        self.tabBar = tabBar
         
-        screenNavigation.pushViewController(groupsModule.controller, animated: false)
+        screenNavigation.pushViewController(viewController, animated: false)
         var controllers = tabBar.viewControllers ?? []
         controllers.append(screenNavigation)
         tabBar.viewControllers = controllers
@@ -44,16 +40,20 @@ class GroupsScreenCoordinator: Coordinator {
     }
 }
 
-extension GroupsScreenCoordinator: GroupsScreenNavigation {
-    func goToGroup() {
-        let viewModel = GroupViewModel(state: .edite)
+extension GroupsScreenCoordinator: GroupsScreenNavigation, GroupScreenNavigation {
+    func goToAddTasks() {
+        
+    }
+    
+    func goToGroup(group: Group, completion: (() -> ())?) {
+        let viewModel = GroupViewControllerViewModel(state: .edite(group: group), completion: completion)
         viewModel.coordinator = self
         let tasksVC = GroupViewController(viewModel: viewModel)
         screenNavigation.pushViewController(tasksVC, animated: true)
     }
     
-    func goToAddGroup() {
-        let viewModel = GroupViewModel(state: .add)
+    func goToAddGroup(completion: (() -> ())?) {
+        let viewModel = GroupViewControllerViewModel(state: .add, completion: completion)
         viewModel.coordinator = self
         let tasksVC = GroupViewController(viewModel: viewModel)
         let nc = UINavigationController(rootViewController: tasksVC)

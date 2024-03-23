@@ -30,8 +30,12 @@
 		E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */; };
 		E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */; };
 		E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */; };
-		E280C81A2BAE249E00130457 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C8192BAE249E00130457 /* GroupViewModel.swift */; };
+		E280C81A2BAE249E00130457 /* GroupViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */; };
 		E280C81D2BAE24BB00130457 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C81C2BAE24BB00130457 /* GroupViewController.swift */; };
+		E2AFB98D2BAF4F5700ED3C45 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */; };
+		E2AFB98E2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFB98A2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift */; };
+		E2AFB98F2BAF4F5700ED3C45 /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFB98B2BAF4F5700ED3C45 /* Group+CoreDataClass.swift */; };
+		E2AFB9902BAF4F5700ED3C45 /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFB98C2BAF4F5700ED3C45 /* Group+CoreDataProperties.swift */; };
 		E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF632BA73AB7003AD044 /* Coordinator.swift */; };
 		E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */; };
 		E2BDEF692BA73E46003AD044 /* GroupsScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */; };
@@ -48,10 +52,6 @@
 		E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF862BA8CE46003AD044 /* TaskState.swift */; };
 		E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */; };
 		E2BDEF8F2BA9A698003AD044 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */; };
-		E2E009C92BAC197300DC2B8C /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */; };
-		E2E009CA2BAC197300DC2B8C /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */; };
-		E2E009CB2BAC197300DC2B8C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */; };
-		E2E009CC2BAC197300DC2B8C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */; };
 		E2E009CF2BAC1BA300DC2B8C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009CE2BAC1BA300DC2B8C /* SnapKit */; };
 		E2E009D12BAC1BA300DC2B8C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */; };
 		E2E009D32BAC1BF700DC2B8C /* TaskIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */; };
@@ -83,8 +83,12 @@
 		E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
-		E280C8192BAE249E00130457 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewControllerViewModel.swift; sourceTree = "<group>"; };
 		E280C81C2BAE24BB00130457 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2AFB98A2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2AFB98B2BAF4F5700ED3C45 /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2AFB98C2BAF4F5700ED3C45 /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2BDEF632BA73AB7003AD044 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsScreenCoordinator.swift; sourceTree = "<group>"; };
@@ -101,10 +105,6 @@
 		E2BDEF862BA8CE46003AD044 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
-		E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,7 +227,7 @@
 		E280C8172BAE248700130457 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E280C8192BAE249E00130457 /* GroupViewModel.swift */,
+				E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,10 +325,10 @@
 		E2BDEF8A2BA9A3F0003AD044 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E2E009C52BAC197300DC2B8C /* Group+CoreDataClass.swift */,
-				E2E009C62BAC197300DC2B8C /* Group+CoreDataProperties.swift */,
-				E2E009C72BAC197300DC2B8C /* Task+CoreDataClass.swift */,
-				E2E009C82BAC197300DC2B8C /* Task+CoreDataProperties.swift */,
+				E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */,
+				E2AFB98A2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift */,
+				E2AFB98B2BAF4F5700ED3C45 /* Group+CoreDataClass.swift */,
+				E2AFB98C2BAF4F5700ED3C45 /* Group+CoreDataProperties.swift */,
 				E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */,
 				E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */,
 			);
@@ -412,15 +412,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E009CC2BAC197300DC2B8C /* Task+CoreDataProperties.swift in Sources */,
 				E213C0982BA59CC900807D2A /* PaddingLabel.swift in Sources */,
-				E2E009CA2BAC197300DC2B8C /* Group+CoreDataProperties.swift in Sources */,
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
-				E280C81A2BAE249E00130457 /* GroupViewModel.swift in Sources */,
+				E280C81A2BAE249E00130457 /* GroupViewControllerViewModel.swift in Sources */,
+				E2AFB98E2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift in Sources */,
 				E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */,
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
+				E2AFB98F2BAF4F5700ED3C45 /* Group+CoreDataClass.swift in Sources */,
 				E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */,
 				E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */,
 				E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */,
@@ -430,17 +430,16 @@
 				E213C0B42BA5A2B900807D2A /* GroupsViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
 				E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */,
-				E2E009C92BAC197300DC2B8C /* Group+CoreDataClass.swift in Sources */,
 				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
 				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
+				E2AFB9902BAF4F5700ED3C45 /* Group+CoreDataProperties.swift in Sources */,
 				E2BDEF802BA857BC003AD044 /* CustomViewController.swift in Sources */,
 				E213C0452BA597C900807D2A /* GroupsViewController.swift in Sources */,
 				E2BDEF822BA8BD47003AD044 /* Stack.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
 				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
-				E2E009CB2BAC197300DC2B8C /* Task+CoreDataClass.swift in Sources */,
 				E2BDEF692BA73E46003AD044 /* GroupsScreenCoordinator.swift in Sources */,
 				E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */,
 				E2BDEF842BA8C922003AD044 /* InsetTextField.swift in Sources */,
@@ -452,6 +451,7 @@
 				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
 				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
+				E2AFB98D2BAF4F5700ED3C45 /* Task+CoreDataClass.swift in Sources */,
 				E213C0A12BA59CC900807D2A /* UIFont+names.swift in Sources */,
 				E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */,
 				E2E009D32BAC1BF700DC2B8C /* TaskIconView.swift in Sources */,

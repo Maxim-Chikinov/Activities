@@ -11,12 +11,27 @@ import SnapKit
 
 class GroupViewController: UIViewController {
     
-    var viewModel: GroupViewModel
+    var viewModel: GroupViewControllerViewModel
     
     private lazy var saveButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.addAction { [weak self] in
-            self?.viewModel.save()
+            guard let self else { return }
+            self.viewModel.save(
+                title: titleTextView.text,
+                description: descriptionTextView.text,
+                icon: iconView.icon,
+                color: colorWellView.selectedColor,
+                newTasks: [Task]()
+            ) { [weak self] in
+                guard let self else { return }
+                switch self.viewModel.state {
+                case .add:
+                    self.dismiss(animated: true)
+                case .edite:
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
         btn.setImage(
             UIImage(systemName: "checkmark.rectangle.fill")?.withRenderingMode(.alwaysTemplate),
@@ -40,7 +55,8 @@ class GroupViewController: UIViewController {
     
     private lazy var titleTextView: UITextView = {
         let view = UITextView()
-        view.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        view.textContainerInset = .init(top: 16, left: 16, bottom: 0, right: 16)
+        view.textContainer.maximumNumberOfLines = 1
         view.font = .systemFont(ofSize: 16)
         view.roundCorners()
         view.addShadow()
@@ -57,7 +73,8 @@ class GroupViewController: UIViewController {
     
     private lazy var descriptionTextView: UITextView = {
         let view = UITextView()
-        view.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        view.textContainerInset = .init(top: 16, left: 16, bottom: 0, right: 16)
+        view.textContainer.maximumNumberOfLines = 1
         view.font = .systemFont(ofSize: 16)
         view.roundCorners()
         view.addShadow()
@@ -127,17 +144,17 @@ class GroupViewController: UIViewController {
         return lbl
     }()
     
-    private lazy var editButton: UIButton = {
+    private lazy var addButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.addAction { [weak self] in
-            self?.viewModel.editTasks()
+            self?.viewModel.addTasks()
         }
         btn.setImage(
-            UIImage(named: "editImg")?.withRenderingMode(.alwaysTemplate),
+            UIImage(systemName: "plus.rectangle.fill")?.withRenderingMode(.alwaysTemplate),
             for: .normal
         )
         btn.tintColor = UIColor(hexString: "5F33E1")
-        btn.setTitle("Edit ", for: .normal)
+        btn.setTitle("Add ", for: .normal)
         btn.roundCorners()
         btn.semanticContentAttribute = .forceRightToLeft
         btn.setContentHuggingPriority(.required, for: .horizontal)
@@ -155,13 +172,17 @@ class GroupViewController: UIViewController {
     
     private lazy var imagePicker = UIImagePickerController()
     
-    init(viewModel: GroupViewModel) {
+    init(viewModel: GroupViewControllerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("\(Self.description()): deinit")
     }
     
     override func viewDidLoad() {
@@ -215,7 +236,7 @@ class GroupViewController: UIViewController {
             descriptionTextView,
             iconStack,
             tasksLabel,
-            editButton,
+            addButton,
             tableView
         )
     }
@@ -231,7 +252,7 @@ class GroupViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.left.equalTo(view).offset(16)
             make.right.equalTo(view).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(48)
         }
         
         descriptionLabel.snp.makeConstraints { make in
@@ -244,7 +265,7 @@ class GroupViewController: UIViewController {
             make.top.equalTo(descriptionLabel.snp.bottom).offset(8)
             make.left.equalTo(view).offset(16)
             make.right.equalTo(view).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(48)
         }
         
         iconStack.snp.makeConstraints { make in
@@ -267,7 +288,7 @@ class GroupViewController: UIViewController {
             make.left.equalTo(view).offset(16)
         }
         
-        editButton.snp.makeConstraints { make in
+        addButton.snp.makeConstraints { make in
             make.top.equalTo(iconStack.snp.bottom).offset(16)
             make.left.equalTo(tasksLabel.snp.right).offset(16)
             make.right.equalTo(view).offset(-16)
@@ -321,7 +342,7 @@ extension GroupViewController: UITableViewDataSource {
 // MARK: - PreviewProvider
 struct GroupViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        let model = GroupViewModel(state: .add)
+        let model = GroupViewControllerViewModel(state: .add, completion: nil)
         let vc = GroupViewController(viewModel: model)
         let nc = UINavigationController(rootViewController: vc)
         

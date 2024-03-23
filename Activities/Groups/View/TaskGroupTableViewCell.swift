@@ -8,16 +8,18 @@
 import UIKit
 import SwiftUI
 
-class TaskGroupTableViewCellViewModel {
-    var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
+class GroupTableViewCellViewModel {
+    var group = Group()
+    
+    var iconImage = Box(UIImage(systemName: "folder.fill")?.withRenderingMode(.alwaysTemplate))
+    var color = Box(UIColor.systemBlue)
     var title = Box("Title")
     var subtitle = Box("Subtitle")
-    var selectButtonAction: (() -> ())? = nil
 }
 
 class TaskGroupTableViewCell: UITableViewCell {
     
-    private(set) var model = TaskGroupTableViewCellViewModel()
+    private(set) var model = GroupTableViewCellViewModel()
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -28,19 +30,8 @@ class TaskGroupTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var imageContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hexString: "EDE4FF")
-        view.roundCorners(12)
-        return view
-    }()
-    
-    private lazy var iconImageView: UIImageView = {
-        let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
-        view.tintColor = UIColor(hexString: "9260F4")
+    private lazy var iconView: TaskIconView = {
+        let view = TaskIconView()
         return view
     }()
     
@@ -57,6 +48,7 @@ class TaskGroupTableViewCell: UITableViewCell {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 12, weight: .medium)
         lbl.textColor = .black.withAlphaComponent(0.6)
+        lbl.numberOfLines = 0
         return lbl
     }()
     
@@ -72,11 +64,11 @@ class TaskGroupTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(model: TaskGroupTableViewCellViewModel) {
+    func configure(model: GroupTableViewCellViewModel) {
         self.model = model
         
         model.iconImage.bind { [weak self] image in
-            self?.iconImageView.image = image
+            self?.iconView.icon = image
         }
         
         model.title.bind { [weak self] text in
@@ -92,12 +84,10 @@ class TaskGroupTableViewCell: UITableViewCell {
         contentView.addSubviews(containerView)
         
         containerView.addSubviews(
-            imageContainer,
+            iconView,
             titleLabel,
             subtitleLabel
         )
-        
-        imageContainer.addSubview(iconImageView)
     }
     
     private func setupConstraints() {
@@ -108,30 +98,22 @@ class TaskGroupTableViewCell: UITableViewCell {
             containerView.bottomAnchor == contentView.bottomAnchor - 8
         ])
         
-        NSLayoutConstraint.activate([
-            imageContainer.topAnchor == containerView.topAnchor + 16,
-            imageContainer.leadingAnchor == containerView.leadingAnchor + 24,
-            imageContainer.bottomAnchor == containerView.bottomAnchor - 16,
-            imageContainer.widthAnchor == imageContainer.heightAnchor
-        ])
-        
-        NSLayoutConstraint.activate([
-            iconImageView.topAnchor == imageContainer.topAnchor + 12,
-            iconImageView.leadingAnchor == imageContainer.leadingAnchor + 12,
-            iconImageView.bottomAnchor == imageContainer.bottomAnchor - 12,
-            iconImageView.trailingAnchor == imageContainer.trailingAnchor - 12
-        ])
+        iconView.snp.makeConstraints { make in
+            make.width.height.equalTo(40)
+            make.left.equalTo(containerView).offset(16)
+            make.centerY.equalTo(containerView)
+        }
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor == containerView.topAnchor + 22,
-            titleLabel.leadingAnchor == imageContainer.trailingAnchor + 16,
-            titleLabel.trailingAnchor == trailingAnchor - 16
+            titleLabel.leadingAnchor == iconView.trailingAnchor + 16,
+            titleLabel.trailingAnchor == containerView.trailingAnchor - 16
         ])
         
         NSLayoutConstraint.activate([
             subtitleLabel.topAnchor == titleLabel.bottomAnchor + 4,
-            subtitleLabel.leadingAnchor == imageContainer.trailingAnchor + 16,
-            subtitleLabel.trailingAnchor == trailingAnchor - 16,
+            subtitleLabel.leadingAnchor == iconView.trailingAnchor + 16,
+            subtitleLabel.trailingAnchor == containerView.trailingAnchor - 16,
             subtitleLabel.bottomAnchor <= containerView.bottomAnchor - 16
         ])
     }
@@ -141,7 +123,8 @@ class TaskGroupTableViewCell: UITableViewCell {
 struct TaskGroupTableViewCellPreview: PreviewProvider {
     static var previews: some View {
         let cell = TaskGroupTableViewCell()
-        let model = TaskGroupTableViewCellViewModel()
+        let model = GroupTableViewCellViewModel()
+        model.subtitle.value = "The sdf dksfjj flkdsjf s dl;fkjsdf jsdklfj"
         cell.configure(model: model)
         return cell
             .showPreview()

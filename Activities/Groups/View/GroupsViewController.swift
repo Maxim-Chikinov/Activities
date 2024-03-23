@@ -85,6 +85,10 @@ class GroupsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("\(Self.description()): deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,7 +104,6 @@ class GroupsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         viewModel.getData()
-        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -116,6 +119,10 @@ class GroupsViewController: UIViewController {
         
         viewModel.taskGroupsCount.bind { [weak self] text in
             self?.taskGroupsCountLabel.text = text
+        }
+        
+        viewModel.onGroupsUpdate = { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
@@ -160,12 +167,12 @@ class GroupsViewController: UIViewController {
 
 extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.taskGroups.count
+        return viewModel.groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskGroupTableViewCell.reuseID) as! TaskGroupTableViewCell
-        let model = viewModel.taskGroups[indexPath.row]
+        let model = viewModel.groups[indexPath.row]
         cell.configure(model: model)
         return cell
     }
@@ -192,8 +199,8 @@ extension GroupsViewController: UITableViewDataSource {
 
 extension GroupsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = viewModel.taskGroups[indexPath.row]
-        model.selectButtonAction?()
+        let model = viewModel.groups[indexPath.row]
+        viewModel.openTask(group: model.group)
     }
 }
 
