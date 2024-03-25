@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GroupScreenNavigation : AnyObject {
-    func goToAddTasks()
+    func goToAddTasks(onAddTaskCompletion: ((Task) -> Void)?)
 }
 
 class GroupViewControllerViewModel {
@@ -29,7 +29,11 @@ class GroupViewControllerViewModel {
     var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
     var color = Box(UIColor.systemBlue)
     var tasks = Box([TaskTableViewCellViewModel]())
+    var onAddTask: (() -> ())?
     var completion: (() -> ())?
+    
+    var newTasks: [Task] = []
+    var deletedTasks: [Task] = []
     
     init(state: State, completion: (() -> ())?) {
         self.state = state
@@ -42,6 +46,13 @@ class GroupViewControllerViewModel {
             navigationTitle.value = "Group"
             title.value = group.title ?? ""
             subtitle.value = group.subtitle ?? ""
+            
+            if let tasks = group.tasks {
+                self.tasks.value = tasks.compactMap({ element in
+                    guard let task = element as? Task else { return nil }
+                    return TaskTableViewCellViewModel(task: task)
+                })
+            }
         }
     }
     
@@ -50,10 +61,16 @@ class GroupViewControllerViewModel {
         description: String?,
         icon: UIImage?,
         color: UIColor?,
-        newTasks: [Task],
         completion: (() -> ())?
     ) {
-        let groupEntity = Group(context: managedObjectContext)
+        let groupEntity: Group
+        
+        switch state {
+        case .add:
+            groupEntity = Group(context: managedObjectContext)
+        case .edite(let group):
+            groupEntity = group
+        }
         
         groupEntity.setValue(title, forKey: #keyPath(Group.title))
         groupEntity.setValue(description, forKey: #keyPath(Group.subtitle))
@@ -63,6 +80,9 @@ class GroupViewControllerViewModel {
         
         if let tasks = groupEntity.tasks?.mutableCopy() as? NSMutableSet {
             tasks.addObjects(from: newTasks)
+            deletedTasks.forEach { task in
+                tasks.remove(task)
+            }
             groupEntity.tasks = tasks
         }
         
@@ -76,6 +96,21 @@ class GroupViewControllerViewModel {
     }
     
     func addTasks() {
-        coordinator?.goToAddTasks()
+        coordinator?.goToAddTasks(onAddTaskCompletion: { [weak self] task in
+            guard let self else { return }
+            
+            if case .edite(let group) = state {
+                self.newTasks.append(task)
+                self.tasks.value.append(TaskTableViewCellViewModel(task: task))
+                self.onAddTask?()
+            }
+        })
+    }
+    
+    func delete(indexPath: IndexPath) {
+        let task = tasks.value[indexPath.row].task
+        deletedTasks.append(task)
+        tasks.value.remove(at: indexPath.row)
+        newTasks.removeAll(where: { $0.taskId == task.taskId })
     }
 }

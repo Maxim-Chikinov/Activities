@@ -18,6 +18,18 @@ class TaskTableViewCellViewModel {
     var state = Box(String?(""))
     var iconImage = Box(UIImage(named: "taskImg")?.withRenderingMode(.alwaysTemplate))
     var color = Box(UIColor.systemBlue)
+    
+    init() {}
+    
+    init(task: Task) {
+        self.task = task
+        title.value = task.title
+        subtitle.value = task.descripton
+        date.value = task.date?.formatted()
+        color.value = task.color as? UIColor ?? .systemBlue
+        state.value = TaskState(rawValue: task.state)?.title
+        iconImage.value = UIImage(data: task.iconData ?? Data()) ?? UIImage(named: "taskImg")?.template
+    }
 }
 
 class TaskTableViewCell: UITableViewCell {
@@ -188,7 +200,7 @@ class TaskTableViewCell: UITableViewCell {
 struct TaskTableViewCellPreview: PreviewProvider {
     static var previews: some View {
         let cell = TaskTableViewCell()
-        let model = TaskTableViewCellViewModel()
+        let model = TaskTableViewCellViewModel(task: Task())
         model.title.value = "title"
         model.subtitle.value = "subtitle"
         model.state.value = "To-do"

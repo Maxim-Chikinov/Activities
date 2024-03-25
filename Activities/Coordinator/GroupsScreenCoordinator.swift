@@ -41,8 +41,11 @@ class GroupsScreenCoordinator: Coordinator {
 }
 
 extension GroupsScreenCoordinator: GroupsScreenNavigation, GroupScreenNavigation {
-    func goToAddTasks() {
-        
+    func goToAddTasks(onAddTaskCompletion: ((Task) -> Void)?) {
+        let viewModel = TasksViewControllerViewModel(state: .select(completion: onAddTaskCompletion))
+        let viewController = TasksViewController(viewModel: viewModel)
+        let nc = UINavigationController(rootViewController: viewController)
+        screenNavigation.present(nc, animated: true)
     }
     
     func goToGroup(group: Group, completion: (() -> ())?) {

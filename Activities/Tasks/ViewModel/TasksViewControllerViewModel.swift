@@ -18,8 +18,7 @@ class TasksViewControllerViewModel {
     
     enum State {
         case allTasks
-        case group(tasks: [Task])
-        case select
+        case select(completion: ((_ task: Task) -> ())?)
     }
     
     weak var coordinator: TasksScreenNavigation?
@@ -60,30 +59,13 @@ class TasksViewControllerViewModel {
             predicates.append(titlePredicate)
         }
         
-        // Tasks
-        if case .group(let tasks) = state {
-            let ids = tasks.map { $0.taskId }
-            let taskPredicate = NSPredicate(format: "taskId in %@", ids)
-            predicates.append(taskPredicate)
-        }
-        
         let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         fetchRequest.predicate = compoundPredicate
         
         // Fetch
         do {
             let tasks = try managedObjectContext.fetch(fetchRequest)
-            self.tasks = tasks.map({ t in
-                let task = TaskTableViewCellViewModel()
-                task.task = t
-                task.title.value = t.title
-                task.subtitle.value = t.descripton
-                task.date.value = t.date?.formatted()
-                task.color.value = t.color as? UIColor ?? .systemBlue
-                task.state.value = TaskState(rawValue: t.state)?.title
-                task.iconImage.value = UIImage(data: t.iconData ?? Data()) ?? UIImage(named: "taskImg")?.template
-                return task
-            })
+            self.tasks = tasks.map({ TaskTableViewCellViewModel(task: $0) })
             taskCount.value = "\(self.tasks.count)"
             updateTasksAction?()
         } catch {
@@ -98,9 +80,14 @@ class TasksViewControllerViewModel {
     }
     
     func selectTask(task: Task) {
-        coordinator?.goToTask(task: task, completion: { [weak self] in
-            self?.getData(taskType: .all)
-        })
+        switch state {
+        case .allTasks:
+            coordinator?.goToTask(task: task, completion: { [weak self] in
+                self?.getData(taskType: .all)
+            })
+        case .select(let completion):
+            completion?(task)
+        }
     }
     
     func delete(indexPath: IndexPath) {

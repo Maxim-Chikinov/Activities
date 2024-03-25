@@ -21,8 +21,7 @@ class GroupViewController: UIViewController {
                 title: titleTextView.text,
                 description: descriptionTextView.text,
                 icon: iconView.icon,
-                color: colorWellView.selectedColor,
-                newTasks: [Task]()
+                color: colorWellView.selectedColor
             ) { [weak self] in
                 guard let self else { return }
                 switch self.viewModel.state {
@@ -164,6 +163,7 @@ class GroupViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         tableView.separatorColor = .clear
         tableView.register(cellType: TaskTableViewCell.self)
@@ -225,6 +225,10 @@ class GroupViewController: UIViewController {
         
         viewModel.tasks.bind { [weak self] _ in
             self?.tableView.reloadData()
+        }
+        
+        viewModel.onAddTask = { [weak self] in
+            self?.dismiss(animated: true)
         }
     }
     
@@ -326,7 +330,7 @@ extension GroupViewController: UIImagePickerControllerDelegate & UINavigationCon
     }
 }
 
-extension GroupViewController: UITableViewDataSource {
+extension GroupViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.tasks.value.count
     }
@@ -336,6 +340,27 @@ extension GroupViewController: UITableViewDataSource {
         let model = viewModel.tasks.value[indexPath.row]
         cell.configure(model: model)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "", handler: { [weak self] _,_,_ in
+            guard let self else { return }
+            self.viewModel.delete(indexPath: indexPath)
+        })
+        deleteAction.image = UIImage(systemName: "trash.fill")?.withTintColor(
+            UIColor(hexString: "9260F4"), 
+            renderingMode: .alwaysOriginal
+        )
+        deleteAction.backgroundColor = .white
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
 
