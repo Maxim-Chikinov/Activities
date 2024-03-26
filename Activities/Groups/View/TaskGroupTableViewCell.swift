@@ -71,6 +71,10 @@ class TaskGroupTableViewCell: UITableViewCell {
             self?.iconView.icon = image
         }
         
+        model.color.bind { [weak self] color in
+            self?.iconView.color = color
+        }
+        
         model.title.bind { [weak self] text in
             self?.titleLabel.text = text
         }

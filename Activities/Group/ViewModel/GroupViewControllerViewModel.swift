@@ -46,6 +46,8 @@ class GroupViewControllerViewModel {
             navigationTitle.value = "Group"
             title.value = group.title ?? ""
             subtitle.value = group.subtitle ?? ""
+            color.value = group.color as? UIColor ?? .systemBlue
+            iconImage.value = UIImage(data: group.icon ?? Data())
             
             if let tasks = group.tasks {
                 self.tasks.value = tasks.compactMap({ element in

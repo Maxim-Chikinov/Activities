@@ -221,6 +221,7 @@ class GroupViewController: UIViewController {
         
         viewModel.color.bind { [weak self] color in
             self?.iconView.color = color
+            self?.colorWellView.selectedColor = color
         }
         
         viewModel.tasks.bind { [weak self] _ in
