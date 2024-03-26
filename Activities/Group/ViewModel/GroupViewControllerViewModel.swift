@@ -99,11 +99,9 @@ class GroupViewControllerViewModel {
         coordinator?.goToAddTasks(onAddTaskCompletion: { [weak self] task in
             guard let self else { return }
             
-            if case .edite(let group) = state {
-                self.newTasks.append(task)
-                self.tasks.value.append(TaskTableViewCellViewModel(task: task))
-                self.onAddTask?()
-            }
+            self.newTasks.append(task)
+            self.tasks.value.append(TaskTableViewCellViewModel(task: task))
+            self.onAddTask?()
         })
     }
     
