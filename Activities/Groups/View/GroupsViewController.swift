@@ -21,7 +21,7 @@ class GroupsViewController: UIViewController {
         return lbl
     }()
     
-    private lazy var taskGroupsCountLabel: UILabel = {
+    private lazy var groupsCountLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = .systemFont(ofSize: 18, weight: .bold)
@@ -72,7 +72,7 @@ class GroupsViewController: UIViewController {
         tableView.delegate = self
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         tableView.separatorColor = .clear
-        tableView.register(cellType: TaskGroupTableViewCell.self)
+        tableView.register(cellType: GroupTableViewCell.self)
         return tableView
     }()
     
@@ -109,7 +109,7 @@ class GroupsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        taskGroupsCountLabel.roundCorners(taskGroupsCountLabel.frame.height / 2)
+        groupsCountLabel.roundCorners(groupsCountLabel.frame.height / 2)
     }
     
     private func setupBinding() {
@@ -118,7 +118,7 @@ class GroupsViewController: UIViewController {
         }
         
         viewModel.taskGroupsCount.bind { [weak self] text in
-            self?.taskGroupsCountLabel.text = text
+            self?.groupsCountLabel.text = text
         }
         
         viewModel.onGroupsUpdate = { [weak self] in
@@ -128,7 +128,7 @@ class GroupsViewController: UIViewController {
     
     private func setupSubviews() {
         view.addSubviews(
-            taskGroupsLabel, taskGroupsCountLabel, addButton, editButton,
+            taskGroupsLabel, groupsCountLabel, addButton, editButton,
             tableView
         )
     }
@@ -140,10 +140,10 @@ class GroupsViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            taskGroupsCountLabel.centerYAnchor == taskGroupsLabel.centerYAnchor,
-            taskGroupsCountLabel.leadingAnchor == taskGroupsLabel.trailingAnchor + 8,
-            taskGroupsCountLabel.widthAnchor == taskGroupsCountLabel.heightAnchor,
-            taskGroupsCountLabel.heightAnchor == taskGroupsLabel.heightAnchor
+            groupsCountLabel.centerYAnchor == taskGroupsLabel.centerYAnchor,
+            groupsCountLabel.leadingAnchor == taskGroupsLabel.trailingAnchor + 8,
+            groupsCountLabel.widthAnchor == groupsCountLabel.heightAnchor,
+            groupsCountLabel.heightAnchor == taskGroupsLabel.heightAnchor
         ])
         
         addButton.snp.makeConstraints { make in
@@ -171,7 +171,7 @@ extension GroupsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TaskGroupTableViewCell.reuseID) as! TaskGroupTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reuseID) as! GroupTableViewCell
         let model = viewModel.groups[indexPath.row]
         cell.configure(model: model)
         return cell

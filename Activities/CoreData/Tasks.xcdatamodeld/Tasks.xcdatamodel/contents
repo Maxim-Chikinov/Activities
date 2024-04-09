@@ -17,4 +17,6 @@
         <attribute name="title" attributeType="String"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="tasks" inverseEntity="Group"/>
     </entity>
+    <fetchRequest name="GroupFetchRequest" entity="Task"/>
+    <fetchRequest name="TaskFetchRequest" entity="Group"/>
 </model>

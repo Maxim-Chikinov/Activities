@@ -200,7 +200,7 @@ class TaskTableViewCell: UITableViewCell {
 struct TaskTableViewCellPreview: PreviewProvider {
     static var previews: some View {
         let cell = TaskTableViewCell()
-        let model = TaskTableViewCellViewModel(task: Task())
+        let model = TaskTableViewCellViewModel()
         model.title.value = "title"
         model.subtitle.value = "subtitle"
         model.state.value = "To-do"

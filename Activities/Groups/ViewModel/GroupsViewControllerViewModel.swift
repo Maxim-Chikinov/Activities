@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol GroupsScreenNavigation : AnyObject {
     func goToGroup(group: Group, completion: (() -> ())?)
@@ -38,6 +39,23 @@ class GroupsViewControllerViewModel {
                 cell.subtitle.value = group.subtitle ?? ""
                 cell.iconImage.value = UIImage(data: group.icon ?? Data())
                 cell.color.value = group.color as? UIColor ?? .systemBlue
+                
+                // Get tasks counts in group
+                if let tasksTitles = group.tasks?.compactMap({ ($0 as? Task)?.title }) {
+                    let tasksCountFetchRequest = NSFetchRequest<NSNumber>(entityName: "Task")
+                    tasksCountFetchRequest.resultType = .countResultType
+                    tasksCountFetchRequest.predicate = NSPredicate(format: "title IN %@", tasksTitles)
+                    
+                    do {
+                        let tasks = try managedObjectContext.fetch(tasksCountFetchRequest)
+                        if let task = tasks.first {
+                            cell.tasksCounter.value = "\(task)"
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 self.groups.append(cell)
             }
         } catch {

@@ -15,9 +15,10 @@ class GroupTableViewCellViewModel {
     var color = Box(UIColor.systemBlue)
     var title = Box("Title")
     var subtitle = Box("Subtitle")
+    var tasksCounter = Box("0")
 }
 
-class TaskGroupTableViewCell: UITableViewCell {
+class GroupTableViewCell: UITableViewCell {
     
     private(set) var model = GroupTableViewCellViewModel()
     
@@ -52,6 +53,17 @@ class TaskGroupTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private lazy var taskCountLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.font = .systemFont(ofSize: 14, weight: .bold)
+        lbl.textColor = UIColor(hexString: "5F33E1")
+        lbl.textAlignment = .center
+        lbl.backgroundColor = UIColor(hexString: "EEE9FF")
+        lbl.roundCorners(10)
+        return lbl
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -82,6 +94,10 @@ class TaskGroupTableViewCell: UITableViewCell {
         model.subtitle.bind { [weak self] text in
             self?.subtitleLabel.text = text
         }
+        
+        model.tasksCounter.bind { [weak self] text in
+            self?.taskCountLabel.text = text
+        }
     }
     
     private func setupSubviews() {
@@ -90,7 +106,8 @@ class TaskGroupTableViewCell: UITableViewCell {
         containerView.addSubviews(
             iconView,
             titleLabel,
-            subtitleLabel
+            subtitleLabel,
+            taskCountLabel
         )
     }
     
@@ -111,7 +128,7 @@ class TaskGroupTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor == containerView.topAnchor + 22,
             titleLabel.leadingAnchor == iconView.trailingAnchor + 16,
-            titleLabel.trailingAnchor == containerView.trailingAnchor - 16
+            titleLabel.trailingAnchor == taskCountLabel.leadingAnchor - 16
         ])
         
         NSLayoutConstraint.activate([
@@ -120,13 +137,19 @@ class TaskGroupTableViewCell: UITableViewCell {
             subtitleLabel.trailingAnchor == containerView.trailingAnchor - 16,
             subtitleLabel.bottomAnchor <= containerView.bottomAnchor - 16
         ])
+        
+        taskCountLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.size.equalTo(20)
+        }
     }
 }
 
 // MARK: - PreviewProvider
 struct TaskGroupTableViewCellPreview: PreviewProvider {
     static var previews: some View {
-        let cell = TaskGroupTableViewCell()
+        let cell = GroupTableViewCell()
         let model = GroupTableViewCellViewModel()
         model.subtitle.value = "The sdf dksfjj flkdsjf s dl;fkjsdf jsdklfj"
         cell.configure(model: model)

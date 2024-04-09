@@ -27,7 +27,7 @@
 		E213C0B02BA5A25600807D2A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0AF2BA5A25600807D2A /* Box.swift */; };
 		E213C0B42BA5A2B900807D2A /* GroupsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B32BA5A2B900807D2A /* GroupsViewControllerViewModel.swift */; };
 		E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */; };
-		E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */; };
+		E213C0BF2BA5AA0900807D2A /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* GroupTableViewCell.swift */; };
 		E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */; };
 		E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */; };
 		E280C81A2BAE249E00130457 /* GroupViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */; };
@@ -80,7 +80,7 @@
 		E213C0AF2BA5A25600807D2A /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		E213C0B32BA5A2B900807D2A /* GroupsViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Operators.swift"; sourceTree = "<group>"; };
-		E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupTableViewCell.swift; sourceTree = "<group>"; };
+		E213C0BE2BA5AA0900807D2A /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
 		E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				E213C0442BA597C900807D2A /* GroupsViewController.swift */,
-				E213C0BE2BA5AA0900807D2A /* TaskGroupTableViewCell.swift */,
+				E213C0BE2BA5AA0900807D2A /* GroupTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
 				E2AFB98F2BAF4F5700ED3C45 /* Group+CoreDataClass.swift in Sources */,
-				E213C0BF2BA5AA0900807D2A /* TaskGroupTableViewCell.swift in Sources */,
+				E213C0BF2BA5AA0900807D2A /* GroupTableViewCell.swift in Sources */,
 				E2BDEF742BA750F3003AD044 /* TaskTableViewCell.swift in Sources */,
 				E213C04B2BA597C900807D2A /* Activities.xcdatamodeld in Sources */,
 				E213C0892BA59CC900807D2A /* UIImage+Extension.swift in Sources */,
