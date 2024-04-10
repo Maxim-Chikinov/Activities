@@ -49,32 +49,21 @@ class TasksViewController: CustomViewController {
         let segmentedControl = CustomSegmentedControl(frame: .zero)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(taskTypeSegmentedControlChanged), for: .primaryActionTriggered)
-        
-        var types = TaskState.allCases
-        types = types.reversed()
-        types.removeFirst()
-        types.forEach { task in
-            segmentedControl.insertSegment(withTitle: task.title, at: 0, animated: false)
-        }
-        segmentedControl.insertSegment(withTitle: TaskState.all.title, at: 0, animated: false)
-        segmentedControl.selectedSegmentIndex = 0
-        
         segmentedControl.selectedSegmentTintColor = UIColor(hexString: "5F33E2")
         segmentedControl.setTitleTextAttributes(
             [
                 .foregroundColor: UIColor(hex: "5F33E2"),
-                .font: UIFont.systemFont(ofSize: 14, weight: .medium)
+                .font: UIFont.systemFont(ofSize: 12, weight: .medium)
             ],
             for: .normal
         )
         segmentedControl.setTitleTextAttributes(
             [
                 .foregroundColor: UIColor.white,
-                .font: UIFont.systemFont(ofSize: 14, weight: .semibold)
+                .font: UIFont.systemFont(ofSize: 12, weight: .semibold)
             ],
             for: .selected
         )
-        
         return segmentedControl
     }()
     
@@ -143,6 +132,29 @@ class TasksViewController: CustomViewController {
         
         viewModel.taskCount.bind { [weak self] text in
             self?.taskGroupsCountLabel.text = text
+        }
+        
+        viewModel.tasksStateFilters.bind { [weak self] filters in
+            guard let self else { return }
+            
+            let selectedSegmentIndex = self.taskTypeSegmentedControl.selectedSegmentIndex
+            
+            // Set segments
+            self.taskTypeSegmentedControl.removeAllSegments()
+            let filters = filters.reversed()
+            filters.forEach { [weak self] filter in
+                guard let self else { return }
+                self.taskTypeSegmentedControl.insertSegment(withTitle: filter, at: 0, animated: false)
+            }
+            self.taskTypeSegmentedControl.insertSegment(withTitle: TaskState.all.title, at: 0, animated: false)
+            self.taskTypeSegmentedControl.setWidth(50, forSegmentAt: 0)
+            
+            // Set selected segment
+            if selectedSegmentIndex == -1 {
+                self.taskTypeSegmentedControl.selectedSegmentIndex = 0
+            } else {
+                self.taskTypeSegmentedControl.selectedSegmentIndex = selectedSegmentIndex
+            }
         }
         
         viewModel.updateTasksAction = { [weak self] in

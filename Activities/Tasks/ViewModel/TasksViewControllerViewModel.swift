@@ -27,6 +27,7 @@ class TasksViewControllerViewModel {
     
     var taskTitle = Box("Tasks")
     var taskCount = Box("")
+    var tasksStateFilters = Box([String]())
     var tasks = [TaskTableViewCellViewModel]()
     var updateTasksAction: (() -> Void)?
     var deleteTaskAction: ((IndexPath) -> Void)?
@@ -71,6 +72,52 @@ class TasksViewControllerViewModel {
         } catch {
             print(error.localizedDescription)
         }
+        
+        // Set segments
+        var toDoCounter = 0
+        var progressCounter = 0
+        var completeCounter = 0
+        
+        // Todo counts
+        do {
+            let tasksCountsFetchReques = Task.fetchRequest()
+            tasksCountsFetchReques.predicate = NSPredicate(format: "%K == %i", #keyPath(Task.state), TaskState.todo.rawValue)
+            
+            do {
+                let results = try managedObjectContext.fetch(tasksCountsFetchReques)
+                toDoCounter = results.count
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        // Progress counts
+        do {
+            let tasksCountsFetchReques = Task.fetchRequest()
+            tasksCountsFetchReques.predicate = NSPredicate(format: "%K == %i", #keyPath(Task.state), TaskState.inProgress.rawValue)
+            
+            do {
+                let results = try managedObjectContext.fetch(tasksCountsFetchReques)
+                progressCounter = results.count
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        // Complete counts
+        do {
+            let tasksCountsFetchReques = Task.fetchRequest()
+            tasksCountsFetchReques.predicate = NSPredicate(format: "%K == %i", #keyPath(Task.state), TaskState.complete.rawValue)
+            
+            do {
+                let results = try managedObjectContext.fetch(tasksCountsFetchReques)
+                completeCounter = results.count
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        tasksStateFilters.value = ["To-do(\(toDoCounter))", "In progress(\(progressCounter))", "Complete(\(completeCounter))"]
     }
     
     func addTask() {
