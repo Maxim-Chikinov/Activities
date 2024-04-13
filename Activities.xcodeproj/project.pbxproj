@@ -30,6 +30,14 @@
 		E213C0BF2BA5AA0900807D2A /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213C0BE2BA5AA0900807D2A /* GroupTableViewCell.swift */; };
 		E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */; };
 		E2377CCC2BA5E418005E8CF2 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */; };
+		E26E046C2BC9416E00D5A945 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E26E046B2BC9416E00D5A945 /* Kingfisher */; };
+		E26E04712BC941A000D5A945 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E04702BC941A000D5A945 /* NewsViewModel.swift */; };
+		E26E04742BC941B100D5A945 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E04732BC941B100D5A945 /* NewsViewController.swift */; };
+		E26E04762BC941DB00D5A945 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E04752BC941DB00D5A945 /* NewsCell.swift */; };
+		E26E04782BC9421100D5A945 /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E04772BC9421100D5A945 /* NewsCoordinator.swift */; };
+		E26E047B2BC951CC00D5A945 /* NewsPosts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E04792BC951CC00D5A945 /* NewsPosts+CoreDataClass.swift */; };
+		E26E047C2BC951CC00D5A945 /* NewsPosts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E047A2BC951CC00D5A945 /* NewsPosts+CoreDataProperties.swift */; };
+		E26E047E2BC951E500D5A945 /* NewsPostsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E047D2BC951E500D5A945 /* NewsPostsProvider.swift */; };
 		E280C81A2BAE249E00130457 /* GroupViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */; };
 		E280C81D2BAE24BB00130457 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280C81C2BAE24BB00130457 /* GroupViewController.swift */; };
 		E2AFB98D2BAF4F5700ED3C45 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */; };
@@ -52,6 +60,10 @@
 		E2BDEF872BA8CE46003AD044 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF862BA8CE46003AD044 /* TaskState.swift */; };
 		E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */; };
 		E2BDEF8F2BA9A698003AD044 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */; };
+		E2C9A9492BCABFDD0022E1E6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E2C9A9482BCABFDD0022E1E6 /* Alamofire */; };
+		E2C9A94B2BCABFDD0022E1E6 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E2C9A94A2BCABFDD0022E1E6 /* AlamofireDynamic */; };
+		E2C9A94D2BCAC55E0022E1E6 /* TimeAgoSinceDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C9A94C2BCAC55E0022E1E6 /* TimeAgoSinceDate.swift */; };
+		E2C9A94F2BCAC6490022E1E6 /* NewsPosts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C9A94E2BCAC6490022E1E6 /* NewsPosts+Extension.swift */; };
 		E2E009CF2BAC1BA300DC2B8C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009CE2BAC1BA300DC2B8C /* SnapKit */; };
 		E2E009D12BAC1BA300DC2B8C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */; };
 		E2E009D32BAC1BF700DC2B8C /* TaskIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */; };
@@ -83,6 +95,13 @@
 		E213C0BE2BA5AA0900807D2A /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		E2377CC92BA5D88E005E8CF2 /* UIView+Shadows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 		E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		E26E04702BC941A000D5A945 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		E26E04732BC941B100D5A945 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E26E04752BC941DB00D5A945 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		E26E04772BC9421100D5A945 /* NewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
+		E26E04792BC951CC00D5A945 /* NewsPosts+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsPosts+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E26E047A2BC951CC00D5A945 /* NewsPosts+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsPosts+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E26E047D2BC951E500D5A945 /* NewsPostsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPostsProvider.swift; sourceTree = "<group>"; };
 		E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewControllerViewModel.swift; sourceTree = "<group>"; };
 		E280C81C2BAE24BB00130457 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -105,6 +124,8 @@
 		E2BDEF862BA8CE46003AD044 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tasks.xcdatamodel; sourceTree = "<group>"; };
+		E2C9A94C2BCAC55E0022E1E6 /* TimeAgoSinceDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgoSinceDate.swift; sourceTree = "<group>"; };
+		E2C9A94E2BCAC6490022E1E6 /* NewsPosts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsPosts+Extension.swift"; sourceTree = "<group>"; };
 		E2E009D22BAC1BF700DC2B8C /* TaskIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +134,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26E046C2BC9416E00D5A945 /* Kingfisher in Frameworks */,
+				E2C9A9492BCABFDD0022E1E6 /* Alamofire in Frameworks */,
+				E2C9A94B2BCABFDD0022E1E6 /* AlamofireDynamic in Frameworks */,
 				E2E009CF2BAC1BA300DC2B8C /* SnapKit in Frameworks */,
 				E2E009D12BAC1BA300DC2B8C /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -150,6 +174,7 @@
 				E280C8162BAE247000130457 /* Group */,
 				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
 				E2BDEF782BA84533003AD044 /* Task */,
+				E26E046D2BC9417B00D5A945 /* News */,
 				E213C0AE2BA5A24C00807D2A /* Utilities */,
 				E213C0752BA59CC900807D2A /* Extensions */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
@@ -177,6 +202,7 @@
 				E213C0822BA59CC900807D2A /* ReusableView.swift */,
 				E213C0B72BA5A60300807D2A /* NSLayoutConstraint+Operators.swift */,
 				E2377CCB2BA5E418005E8CF2 /* UIControl+Extension.swift */,
+				E2C9A94C2BCAC55E0022E1E6 /* TimeAgoSinceDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +241,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		E26E046D2BC9417B00D5A945 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				E26E046F2BC9419300D5A945 /* ViewModel */,
+				E26E046E2BC9418E00D5A945 /* View */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		E26E046E2BC9418E00D5A945 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E26E04732BC941B100D5A945 /* NewsViewController.swift */,
+				E26E04752BC941DB00D5A945 /* NewsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E26E046F2BC9419300D5A945 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E26E04702BC941A000D5A945 /* NewsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E280C8162BAE247000130457 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +299,7 @@
 				E2BDEF662BA73B29003AD044 /* AppCoordinator.swift */,
 				E2BDEF6A2BA73E54003AD044 /* TasksScreenCoordinator.swift */,
 				E2BDEF682BA73E46003AD044 /* GroupsScreenCoordinator.swift */,
+				E26E04772BC9421100D5A945 /* NewsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -329,6 +382,10 @@
 				E2AFB98A2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift */,
 				E2AFB98B2BAF4F5700ED3C45 /* Group+CoreDataClass.swift */,
 				E2AFB98C2BAF4F5700ED3C45 /* Group+CoreDataProperties.swift */,
+				E26E04792BC951CC00D5A945 /* NewsPosts+CoreDataClass.swift */,
+				E26E047A2BC951CC00D5A945 /* NewsPosts+CoreDataProperties.swift */,
+				E2C9A94E2BCAC6490022E1E6 /* NewsPosts+Extension.swift */,
+				E26E047D2BC951E500D5A945 /* NewsPostsProvider.swift */,
 				E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */,
 				E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */,
 			);
@@ -354,6 +411,9 @@
 			packageProductDependencies = (
 				E2E009CE2BAC1BA300DC2B8C /* SnapKit */,
 				E2E009D02BAC1BA300DC2B8C /* SnapKit-Dynamic */,
+				E26E046B2BC9416E00D5A945 /* Kingfisher */,
+				E2C9A9482BCABFDD0022E1E6 /* Alamofire */,
+				E2C9A94A2BCABFDD0022E1E6 /* AlamofireDynamic */,
 			);
 			productName = Activities;
 			productReference = E213C03D2BA597C900807D2A /* Activities.app */;
@@ -385,6 +445,8 @@
 			mainGroup = E213C0342BA597C900807D2A;
 			packageReferences = (
 				E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E26E046A2BC9416E00D5A945 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E2C9A9472BCABFDD0022E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E213C03E2BA597C900807D2A /* Products */;
 			projectDirPath = "";
@@ -416,9 +478,12 @@
 				E213C0A72BA59CC900807D2A /* ReusableView.swift in Sources */,
 				E2BDEF7C2BA845A8003AD044 /* TaskViewController.swift in Sources */,
 				E280C81A2BAE249E00130457 /* GroupViewControllerViewModel.swift in Sources */,
+				E26E047B2BC951CC00D5A945 /* NewsPosts+CoreDataClass.swift in Sources */,
+				E2C9A94F2BCAC6490022E1E6 /* NewsPosts+Extension.swift in Sources */,
 				E2AFB98E2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift in Sources */,
 				E2BDEF8C2BA9A3FA003AD044 /* CoreDataStack.swift in Sources */,
 				E213C09E2BA59CC900807D2A /* UIStackView+Extension.swift in Sources */,
+				E26E047C2BC951CC00D5A945 /* NewsPosts+CoreDataProperties.swift in Sources */,
 				E2377CCA2BA5D88E005E8CF2 /* UIView+Shadows.swift in Sources */,
 				E2AFB98F2BAF4F5700ED3C45 /* Group+CoreDataClass.swift in Sources */,
 				E213C0BF2BA5AA0900807D2A /* GroupTableViewCell.swift in Sources */,
@@ -429,14 +494,18 @@
 				E213C0A42BA59CC900807D2A /* BorderedGradientView.swift in Sources */,
 				E213C0B42BA5A2B900807D2A /* GroupsViewControllerViewModel.swift in Sources */,
 				E213C0862BA59CC900807D2A /* UIViewControllerRepresentable+Extension.swift in Sources */,
+				E26E04782BC9421100D5A945 /* NewsCoordinator.swift in Sources */,
 				E2BDEF7E2BA845BC003AD044 /* TaskViewControllerViewModel.swift in Sources */,
 				E2BDEF672BA73B29003AD044 /* AppCoordinator.swift in Sources */,
+				E26E047E2BC951E500D5A945 /* NewsPostsProvider.swift in Sources */,
 				E2BDEF6B2BA73E54003AD044 /* TasksScreenCoordinator.swift in Sources */,
 				E213C0B02BA5A25600807D2A /* Box.swift in Sources */,
 				E2AFB9902BAF4F5700ED3C45 /* Group+CoreDataProperties.swift in Sources */,
 				E2BDEF802BA857BC003AD044 /* CustomViewController.swift in Sources */,
+				E2C9A94D2BCAC55E0022E1E6 /* TimeAgoSinceDate.swift in Sources */,
 				E213C0452BA597C900807D2A /* GroupsViewController.swift in Sources */,
 				E2BDEF822BA8BD47003AD044 /* Stack.swift in Sources */,
+				E26E04742BC941B100D5A945 /* NewsViewController.swift in Sources */,
 				E213C0922BA59CC900807D2A /* UIView+Frame.swift in Sources */,
 				E2BDEF722BA7501A003AD044 /* TasksViewController.swift in Sources */,
 				E2BDEF702BA7500F003AD044 /* TasksViewControllerViewModel.swift in Sources */,
@@ -446,9 +515,11 @@
 				E2BDEF8F2BA9A698003AD044 /* Tasks.xcdatamodeld in Sources */,
 				E213C0412BA597C900807D2A /* AppDelegate.swift in Sources */,
 				E2BDEF772BA77B0A003AD044 /* CustomSegmentedControl.swift in Sources */,
+				E26E04762BC941DB00D5A945 /* NewsCell.swift in Sources */,
 				E2BDEF642BA73AB7003AD044 /* Coordinator.swift in Sources */,
 				E280C81D2BAE24BB00130457 /* GroupViewController.swift in Sources */,
 				E213C0952BA59CC900807D2A /* UIColor+Helper.swift in Sources */,
+				E26E04712BC941A000D5A945 /* NewsViewModel.swift in Sources */,
 				E213C0B82BA5A60300807D2A /* NSLayoutConstraint+Operators.swift in Sources */,
 				E213C0832BA59CC900807D2A /* ClosureTapGestureRecognizer.swift in Sources */,
 				E2AFB98D2BAF4F5700ED3C45 /* Task+CoreDataClass.swift in Sources */,
@@ -670,6 +741,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E26E046A2BC9416E00D5A945 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		E2C9A9472BCABFDD0022E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -681,6 +768,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E26E046B2BC9416E00D5A945 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E26E046A2BC9416E00D5A945 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		E2C9A9482BCABFDD0022E1E6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2C9A9472BCABFDD0022E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E2C9A94A2BCABFDD0022E1E6 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2C9A9472BCABFDD0022E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
 		E2E009CE2BAC1BA300DC2B8C /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E2E009CD2BAC1BA300DC2B8C /* XCRemoteSwiftPackageReference "SnapKit" */;

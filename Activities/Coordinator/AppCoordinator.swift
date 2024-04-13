@@ -40,6 +40,11 @@ class AppCoordinator: Coordinator {
         let groupsCoordinator = GroupsScreenCoordinator(navigationController: navigationController, tabBar: tabBar)
         children.append(groupsCoordinator)
         groupsCoordinator.start()
+        
+        // Add News Screen
+        let newsCoordinator = NewsCoordinator(navigationController: navigationController, tabBar: tabBar)
+        children.append(newsCoordinator)
+        newsCoordinator.start()
     }
 }
 

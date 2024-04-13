@@ -7,6 +7,14 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="groups" inverseEntity="Task"/>
     </entity>
+    <entity name="NewsPosts" representedClassName="NewsPosts" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="postID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="color" optional="YES" attributeType="Transformable" valueTransformerName=""/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
