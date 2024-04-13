@@ -170,11 +170,7 @@
 				E2BDEF852BA8CE26003AD044 /* Models */,
 				E2BDEF652BA73ABE003AD044 /* Coordinator */,
 				E2BDEF752BA77B01003AD044 /* Views */,
-				E213C0AA2BA59E3A00807D2A /* Groups */,
-				E280C8162BAE247000130457 /* Group */,
-				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
-				E2BDEF782BA84533003AD044 /* Task */,
-				E26E046D2BC9417B00D5A945 /* News */,
+				E2C9A9502BCAD12B0022E1E6 /* Modules */,
 				E213C0AE2BA5A24C00807D2A /* Utilities */,
 				E213C0752BA59CC900807D2A /* Extensions */,
 				E213C04C2BA597CA00807D2A /* Assets.xcassets */,
@@ -390,6 +386,18 @@
 				E2BDEF8B2BA9A3FA003AD044 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E2C9A9502BCAD12B0022E1E6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E213C0AA2BA59E3A00807D2A /* Groups */,
+				E280C8162BAE247000130457 /* Group */,
+				E2BDEF6C2BA74FD2003AD044 /* Tasks */,
+				E2BDEF782BA84533003AD044 /* Task */,
+				E26E046D2BC9417B00D5A945 /* News */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
