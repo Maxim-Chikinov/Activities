@@ -35,16 +35,16 @@ class GroupsViewControllerViewModel {
             groups.forEach { group in
                 let cell = GroupTableViewCellViewModel()
                 cell.group = group
-                cell.title.value = group.title ?? ""
+                cell.title.value = group.name ?? ""
                 cell.subtitle.value = group.subtitle ?? ""
                 cell.iconImage.value = UIImage(data: group.icon ?? Data())
                 cell.color.value = group.color as? UIColor ?? .systemBlue
                 
                 // Get tasks counts in group
-                if let tasksTitles = group.tasks?.compactMap({ ($0 as? Task)?.title }) {
+                if let tasksTitles = group.tasks?.compactMap({ ($0 as? Task)?.name }) {
                     let tasksCountFetchRequest = NSFetchRequest<NSNumber>(entityName: "Task")
                     tasksCountFetchRequest.resultType = .countResultType
-                    tasksCountFetchRequest.predicate = NSPredicate(format: "title IN %@", tasksTitles)
+                    tasksCountFetchRequest.predicate = NSPredicate(format: "name IN %@", tasksTitles)
                     
                     do {
                         let tasks = try managedObjectContext.fetch(tasksCountFetchRequest)

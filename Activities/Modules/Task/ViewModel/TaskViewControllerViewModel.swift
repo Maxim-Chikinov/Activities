@@ -40,7 +40,7 @@ class TaskViewControllerViewModel {
         case .update(let task):
             title.value = "Update task"
             buttonTitle.value = "UPDATE"
-            taskTitle.value = task.title
+            taskTitle.value = task.name
             taskDescription.value = task.descripton
             taskDate.value = task.date
             taskState.value = TaskState(rawValue: task.state) ?? .all
@@ -61,7 +61,7 @@ class TaskViewControllerViewModel {
             }
             
             taskEntity.setValue(UUID(), forKey: #keyPath(Task.taskId))
-            taskEntity.setValue(title, forKey: #keyPath(Task.title))
+            taskEntity.setValue(title, forKey: #keyPath(Task.name))
             taskEntity.setValue(description, forKey: #keyPath(Task.descripton))
             taskEntity.setValue(date, forKey: #keyPath(Task.date))
             taskEntity.setValue(color, forKey: #keyPath(Task.color))

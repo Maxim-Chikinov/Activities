@@ -104,6 +104,7 @@
 		E26E047D2BC951E500D5A945 /* NewsPostsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPostsProvider.swift; sourceTree = "<group>"; };
 		E280C8192BAE249E00130457 /* GroupViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewControllerViewModel.swift; sourceTree = "<group>"; };
 		E280C81C2BAE24BB00130457 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		E2A77E712BD12C3F007518A8 /* Tasks v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Tasks v2.xcdatamodel"; sourceTree = "<group>"; };
 		E2AFB9892BAF4F5700ED3C45 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E2AFB98A2BAF4F5700ED3C45 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E2AFB98B2BAF4F5700ED3C45 /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Group+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -817,9 +818,10 @@
 		E2BDEF8D2BA9A698003AD044 /* Tasks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E2A77E712BD12C3F007518A8 /* Tasks v2.xcdatamodel */,
 				E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */,
 			);
-			currentVersion = E2BDEF8E2BA9A698003AD044 /* Tasks.xcdatamodel */;
+			currentVersion = E2A77E712BD12C3F007518A8 /* Tasks v2.xcdatamodel */;
 			path = Tasks.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

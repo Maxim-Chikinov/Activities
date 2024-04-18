@@ -22,7 +22,7 @@ extension Task {
     @NSManaged public var iconData: Data?
     @NSManaged public var state: Int16
     @NSManaged public var taskId: UUID?
-    @NSManaged public var title: String?
+    @NSManaged public var name: String?
     @NSManaged public var groups: NSSet?
 
 }

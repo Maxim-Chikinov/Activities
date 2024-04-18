@@ -23,7 +23,7 @@ class TaskTableViewCellViewModel {
     
     init(task: Task) {
         self.task = task
-        title.value = task.title
+        title.value = task.name
         subtitle.value = task.descripton
         date.value = task.date?.formatted()
         color.value = task.color as? UIColor ?? .systemBlue

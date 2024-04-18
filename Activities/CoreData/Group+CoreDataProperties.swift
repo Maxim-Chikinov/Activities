@@ -19,7 +19,7 @@ extension Group {
     @NSManaged public var color: NSObject?
     @NSManaged public var icon: Data?
     @NSManaged public var subtitle: String?
-    @NSManaged public var title: String?
+    @NSManaged public var name: String?
     @NSManaged public var tasks: NSSet?
 
 }

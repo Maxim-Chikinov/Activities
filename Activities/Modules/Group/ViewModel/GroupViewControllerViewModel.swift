@@ -44,7 +44,7 @@ class GroupViewControllerViewModel {
             navigationTitle.value = "Add group"
         case .edite(let group):
             navigationTitle.value = "Group"
-            title.value = group.title ?? ""
+            title.value = group.name ?? ""
             subtitle.value = group.subtitle ?? ""
             color.value = group.color as? UIColor ?? .systemBlue
             iconImage.value = UIImage(data: group.icon ?? Data())
@@ -74,7 +74,7 @@ class GroupViewControllerViewModel {
             groupEntity = group
         }
         
-        groupEntity.setValue(title, forKey: #keyPath(Group.title))
+        groupEntity.setValue(title, forKey: #keyPath(Group.name))
         groupEntity.setValue(description, forKey: #keyPath(Group.subtitle))
         groupEntity.setValue(description, forKey: #keyPath(Group.subtitle))
         groupEntity.setValue(icon?.pngData(), forKey: #keyPath(Group.icon))
